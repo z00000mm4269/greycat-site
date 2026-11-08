@@ -75,9 +75,6 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 .wf canvas{display:block;width:100%;height:auto}
 .wf-cap{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.75rem;color:var(--muted);margin:6px 0 0}
 .wf-cap > span:last-child{margin-left:auto}
-.wf-cap .legend{display:inline-flex;align-items:center;gap:6px}
-.wf-cap .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-left:8px}
-.wf-cap .legend i:first-child{margin-left:0}
 .scope{margin-top:6px !important}
 @media (max-width:640px){.scope .mktext{display:none}.scene .lbl:not(.us-l){display:none}
 .scene .lbl.us-l{font-size:30px}
@@ -205,7 +202,7 @@ footer a{color:#C9D2D7}
     </svg>
   </figure>
   <figure class="wf" aria-hidden="true"><canvas id="wf" width="600" height="90"></canvas></figure>
-  <p class="wf-cap"><span class="legend" aria-hidden="true"><i style="background:#3FA7B5"></i>Signals<i style="background:#F58232"></i>Jamming</span><span aria-hidden="true">Waterfall, time ↓</span></p>
+  <p class="wf-cap"><span aria-hidden="true">Waterfall, time ↓</span></p>
   <figure class="scope" aria-hidden="true">
     <svg viewBox="0 0 1200 240" preserveAspectRatio="none">
       <g class="gridline">
