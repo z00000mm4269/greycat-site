@@ -56,7 +56,9 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 .scene .downlink line.cut{stroke:#C0392B;opacity:.35}
 .scene .downlink .spark{fill:var(--marker)}
 .scene .enemy-links path{fill:none;stroke:#C0392B;stroke-width:1.4;stroke-dasharray:3 4;opacity:.8}
-.scene .other rect{fill:var(--signal);stroke:none}
+.scene .other > rect{fill:var(--signal);stroke:none}
+.scene .other .lock rect{fill:#fff}
+.scene .other .lock path{stroke:#fff}
 .scene .other text{font:700 20px "IBM Plex Sans",system-ui,sans-serif;fill:#fff}
 .scene .ground{stroke:var(--grid);stroke-width:1.5}
 .scene .ant line{stroke:var(--ink);stroke-width:3;stroke-linecap:round}
@@ -80,9 +82,11 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
   @keyframes pulse{0%{opacity:.15}25%{opacity:1}100%{opacity:.15}}
 }
 @media (max-width:640px){.scope .mktext{display:none}
-.scene .other rect{y:150px;width:400px;height:76px;rx:14px}
-.scene .other text{font-size:32px;transform:translateX(80px)}}
-footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:0 0 32px}
+.scene .other > rect{y:150px;width:400px;height:76px;rx:14px}
+.scene .other text{font-size:32px;transform:translateX(88px)}
+.scene .other .lock{transform:translate(18px,172px) scale(1.7)}}
+footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:28px 0;margin-top:88px}
+footer a{color:#C9D2D7}
 </style>
 </head>
 <body>
@@ -176,8 +180,9 @@ footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:0 0 32px}
       </g>
       <!-- other applications -->
       <g class="other">
-        <rect x="0" y="170" width="240" height="50" rx="10"/>
-        <text x="120" y="202" text-anchor="middle">Other applications</text>
+        <rect x="0" y="170" width="256" height="50" rx="10"/>
+        <text x="142" y="202" text-anchor="middle">Other mission areas</text>
+        <g class="lock" transform="translate(20 184)"><rect x="0" y="7" width="14" height="11" rx="2"/><path d="M3,7 V4 a4,4 0 0 1 8,0 V7" fill="none" stroke-width="2"/></g>
       </g>
       <!-- links defeated -->
       <g class="defeat">
@@ -221,7 +226,7 @@ footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:0 0 32px}
 <main>
 <section class="wrap" aria-labelledby="specialty">
   <h2 id="specialty">What we specialize in</h2>
-  <p class="lead">Electronic warfare, counter-UxS, and electromagnetic countermeasure system engineering, including breaking down requirements and tying them to the product the customer has in mind.</p>
+  <p class="lead">Electronic warfare, counter-UxS, and electromagnetic countermeasure system engineering from VHF through Ka-band, including breaking down requirements and tying them to the product the customer has in mind.</p>
   <p class="founder">Founded by a career EW engineer with experience on RCIED-defeat, EOD and counter-UxS programs of record supporting SOCOM, USMC and other DoD customers.</p>
 </section>
 
@@ -234,7 +239,7 @@ footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:0 0 32px}
     <li>Small-signal RF design: cascade analysis, blocking signals, bandwidth vs. sensitivity</li>
     <li>High-power RF amplifier design specifications</li>
     <li>System Security Engineering (SSE)</li>
-    <li>DSP in FPGAs and GPUs</li>
+    <li>Real-time DSP in C++, FPGAs and GPUs (CUDA)</li>
     <li>AI/ML for signal detection and classification, and deterministic real-time DSP where countermeasure timelines can't wait</li>
     <li>Embedded software architecture</li>
     <li>Distributed sensors</li>
@@ -250,12 +255,6 @@ footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:0 0 32px}
 </section>
 </main>
 
-<section class="contact" aria-labelledby="contact">
-  <div class="wrap">
-    <h2 id="contact">Contact</h2>
-    <p><a href="mailto:contact@greycatengsolutions.com">contact@greycatengsolutions.com</a></p>
-  </div>
-</section>
-<footer><div class="wrap">© 2024–2026 Grey Cat Solutions LLC · CAGE 04A24</div></footer>
+<footer><div class="wrap">© 2024–2026 Grey Cat Solutions LLC · CAGE 04A24 · <a href="mailto:contact@greycatengsolutions.com">contact@greycatengsolutions.com</a></div></footer>
 </body>
 </html>
