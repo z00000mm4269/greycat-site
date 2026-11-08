@@ -29,7 +29,6 @@ h1{font:800 clamp(2.4rem,7.4vw,5.6rem)/0.95 "Archivo",sans-serif;font-stretch:12
 .scope .mktext{font:500 15px "IBM Plex Sans",sans-serif;fill:var(--ink)}
 .scope .axis{font:400 12px "IBM Plex Sans",sans-serif;fill:var(--muted)}
 @media (prefers-reduced-motion:no-preference){
-  .scope .trace{stroke-dasharray:2600;stroke-dashoffset:2600;animation:sweep 2.4s ease-out .2s forwards}
   .scope .marker-g{opacity:0;animation:show .4s ease-out 2.3s forwards}
   @keyframes sweep{to{stroke-dashoffset:0}}
   @keyframes show{to{opacity:1}}
@@ -81,7 +80,7 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 @media (max-width:640px){.scope .mktext{display:none}.scene .lbl:not(.us-l){display:none}
 .scene .lbl.us-l{font-size:30px}
 .scene .lead:not(.us-lead){display:none}
-.scene .tag{transform:translate(290px,134px) scale(1.8) translate(-290px,-134px)}}
+.scene .tag{transform:translate(266px,209px) scale(1.35) translate(-266px,-209px)}}
 footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:28px 0;margin-top:88px}
 footer a{color:#C9D2D7}
 </style>
@@ -93,9 +92,9 @@ footer a{color:#C9D2D7}
   <figure class="scene" aria-hidden="true">
     <svg viewBox="0 0 1200 250" preserveAspectRatio="xMidYMid meet">
       <line class="ground" x1="0" y1="232" x2="1200" y2="232"/>
-      <path class="field" d="M-90,232 A260,95 0 0 1 430,232"/>
-      <path class="field" d="M-390,232 A560,165 0 0 1 730,232"/>
-      <path class="field" d="M-730,232 A900,222 0 0 1 1070,232"/>
+      <path class="field" d="M60,232 A260,95 0 0 1 580,232"/>
+      <path class="field" d="M-240,232 A560,165 0 0 1 880,232"/>
+      <path class="field" d="M-580,232 A900,222 0 0 1 1220,232"/>
       <line class="head c2" x1="930" y1="186" x2="785" y2="146"/>
       <line class="tail c2" x1="762" y1="140" x2="640" y2="106"/>
       <line class="cut" x1="774" y1="150" x2="778" y2="137"/>
@@ -174,15 +173,13 @@ footer a{color:#C9D2D7}
         <path class="ln" d="M0,-16 V-40 M-10,-46 Q0,-36 10,-46 M0,-41 V-46 M-12,-9 H-2 M4,-9 H12"/>
       </g>
       <!-- our jammer -->
-      <g class="us" transform="translate(170 232) scale(1.7)">
+      <g class="us" transform="translate(320 232) scale(1.7)">
         <rect class="ln-fill" x="-22" y="-26" width="44" height="26" rx="3"/>
         <path class="ln" d="M-12,-26 L-18,-56 M0,-26 V-60 M12,-26 L18,-56"/>
         <path class="slot" d="M-14,-17 H2 M-14,-10 H2"/>
         <circle cx="12" cy="-14" r="3.2" fill="var(--marker)"/>
       </g>
       <!-- callouts -->
-      <path class="lead us-lead" d="M210,152 L242,120 H290"/>
-      <text class="lbl us-l" x="296" y="125">Grey Cat</text>
       <path class="lead" d="M462,30 L500,14 H540"/>
       <text class="lbl" x="544" y="18">GNSS / SATCOM</text>
       <path class="lead" d="M652,84 L680,58 H716"/>
@@ -192,9 +189,9 @@ footer a{color:#C9D2D7}
       <path class="lead" d="M884,170 L852,196 H806"/>
       <text class="lbl" x="802" y="200" text-anchor="end">C2 link</text>
       <g class="tag">
-        <rect x="290" y="134" width="196" height="26" rx="3"/>
-        <g class="lk" transform="translate(300 139)"><rect x="0" y="6" width="11" height="9" rx="1.5"/><path d="M2.5,6 V4 a3,3 0 0 1 6,0 V6"/></g>
-        <text x="318" y="152">Other mission areas</text>
+        <rect x="70" y="196" width="196" height="26" rx="3"/>
+        <g class="lk" transform="translate(80 201)"><rect x="0" y="6" width="11" height="9" rx="1.5"/><path d="M2.5,6 V4 a3,3 0 0 1 6,0 V6"/></g>
+        <text x="98" y="214">Other mission areas</text>
       </g>
     </svg>
   </figure>
@@ -255,11 +252,13 @@ const em=[[.18,.012,.35,1],[.44,.006,.55,1],[.62,.004,.95,.6],[.81,.009,.45,.8]]
 const st=[[14,22,38],[20,90,104],[63,167,181],[232,184,74]];
 function cm(v){v=Math.max(0,Math.min(1,v))*3;const i=Math.min(2,Math.floor(v)),f=v-i,a=st[i],b=st[i+1];return[a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,a[2]+(b[2]-a[2])*f]}
 const CYC=150,OFF=60;let t=0;
-function row(jam){const img=x.createImageData(W,1);for(let i=0;i<W;i++){const u=i/W;let v=.08+Math.random()*.1;
-if(jam){v+=.14+Math.random()*.1;for(const[c0]of em.slice(1))v+=.18*Math.exp(-(((u-c0)/.035)**2)/2)}
-else{for(const[c0,w,a,d]of em){const on=d>=1||((Math.sin(t*.09+c0*40)+1)/2)<d;if(on)v+=a*Math.exp(-(((u-c0)/(w*1.4))**2)/2)*(.85+Math.random()*.3)}}
-const k=cm(v);img.data.set([k[0],k[1],k[2],255],i*4)}return img}
-function step(){t++;const jam=(t%CYC)>=OFF;sc&&sc.classList.toggle('off',!jam);x.drawImage(c,0,0,W,H-1,0,1,W,H-1);x.putImageData(row(jam),0,0)}
+let lvl=0;const avg=new Float32Array(W).fill(.13),tr=document.querySelector('.scope .trace'),fa=document.querySelector('.scope .fillarea');
+function draw(){if(!tr)return;let pts=[];for(let i=0;i<W;i+=2){const y=Math.min(218,Math.max(14,198-(avg[i]-.13)*230));pts.push((i/W*1200).toFixed(1)+','+y.toFixed(1))}const P=pts.join(' ');tr.setAttribute('points',P);fa&&fa.setAttribute('points','0,220 '+P+' 1200,220')}
+function row(){const img=x.createImageData(W,1);for(let i=0;i<W;i++){const u=i/W;let v=.08+Math.random()*.1+.04*lvl;
+for(const[c0,w,a,d]of em){const on=d>=1||((Math.sin(t*.09+c0*40)+1)/2)<d;if(on)v+=a*(1-.75*lvl)*Math.exp(-(((u-c0)/(w*1.4))**2)/2)*(.85+Math.random()*.3);
+v+=lvl*(.32+Math.random()*.18)*Math.exp(-(((u-c0)/.022)**2)/2)}
+avg[i]=avg[i]*.75+v*.25;const k=cm(v);img.data.set([k[0],k[1],k[2],255],i*4)}return img}
+function step(){t++;const jam=(t%CYC)>=OFF;lvl+=((jam?1:0)-lvl)*.08;sc&&sc.classList.toggle('off',!jam);x.drawImage(c,0,0,W,H-1,0,1,W,H-1);x.putImageData(row(),0,0);if(t%2===0)draw()}
 const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
 for(let y=0;y<H;y++)step();
 if(still){sc&&sc.classList.remove('off')}else setInterval(step,90);})();
