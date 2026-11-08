@@ -72,6 +72,9 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 .scene .tag rect{fill:var(--ink)}
 .scene .tag text{font:600 14px "IBM Plex Sans",system-ui,sans-serif;fill:#fff}
 .scene .tag .lk rect{fill:#fff}.scene .tag .lk path{fill:none;stroke:#fff;stroke-width:1.6}
+.scene .gap{stroke-width:1.4;fill:none;opacity:0;transition:opacity .6s}
+.scene .gap.c2{stroke:var(--ink)}.scene .gap.sat{stroke:var(--signal);stroke-dasharray:1.5 4}
+.scene.off .gap{opacity:.85}
 .scene.off .field{opacity:.12}.scene.off .tail{opacity:.85}.scene.off .cut{opacity:0}
 .wf{margin:4px 0 0;background:#0E1626;border-radius:2px;overflow:hidden}
 .wf canvas{display:block;width:100%;height:auto}
@@ -101,38 +104,47 @@ footer a{color:#C9D2D7}
       <path class="field" d="M-240,232 A560,165 0 0 1 880,232"/>
       <path class="field" d="M-580,232 A900,222 0 0 1 1220,232"/>
       <line class="head c2" x1="930" y1="186" x2="785" y2="146"/>
+      <line class="gap c2" x1="785" y1="146" x2="762" y2="140"/>
       <line class="tail c2" x1="762" y1="140" x2="640" y2="106"/>
       <line class="cut" x1="774" y1="150" x2="778" y2="137"/>
       <line class="cut" x1="767" y1="148" x2="771" y2="135"/>
       <line class="head c2" x1="930" y1="186" x2="880" y2="167"/>
+      <line class="gap c2" x1="880" y1="167" x2="872" y2="164"/>
       <line class="tail c2" x1="872" y1="164" x2="830" y2="148"/>
       <line class="cut" x1="875" y1="172" x2="879" y2="159"/>
       <line class="cut" x1="872" y1="171" x2="877" y2="158"/>
       <line class="head c2" x1="930" y1="186" x2="970" y2="135"/>
+      <line class="gap c2" x1="970" y1="135" x2="976" y2="127"/>
       <line class="tail c2" x1="976" y1="127" x2="1010" y2="84"/>
       <line class="cut" x1="967" y1="128" x2="978" y2="136"/>
       <line class="cut" x1="969" y1="125" x2="980" y2="134"/>
       <line class="head sat" x1="430" y1="-22" x2="535" y2="34"/>
+      <line class="gap sat" x1="535" y1="34" x2="552" y2="43"/>
       <line class="tail sat" x1="552" y1="43" x2="640" y2="90"/>
       <line class="cut" x1="545" y1="31" x2="538" y2="44"/>
       <line class="cut" x1="550" y1="34" x2="543" y2="46"/>
       <line class="head sat" x1="430" y1="-22" x2="630" y2="55"/>
+      <line class="gap sat" x1="630" y1="55" x2="662" y2="67"/>
       <line class="tail sat" x1="662" y1="67" x2="830" y2="132"/>
       <line class="cut" x1="645" y1="53" x2="639" y2="66"/>
       <line class="cut" x1="655" y1="57" x2="649" y2="70"/>
       <line class="head sat" x1="430" y1="-22" x2="498" y2="83"/>
+      <line class="gap sat" x1="498" y1="83" x2="508" y2="100"/>
       <line class="tail sat" x1="508" y1="100" x2="565" y2="188"/>
       <line class="cut" x1="507" y1="86" x2="496" y2="93"/>
       <line class="cut" x1="511" y1="91" x2="499" y2="98"/>
       <line class="head sat" x1="430" y1="-22" x2="538" y2="83"/>
+      <line class="gap sat" x1="538" y1="83" x2="555" y2="100"/>
       <line class="tail sat" x1="555" y1="100" x2="645" y2="188"/>
       <line class="cut" x1="549" y1="84" x2="539" y2="94"/>
       <line class="cut" x1="554" y1="90" x2="544" y2="100"/>
       <line class="head sat" x1="1110" y1="-28" x2="1060" y2="20"/>
+      <line class="gap sat" x1="1060" y1="20" x2="1052" y2="28"/>
       <line class="tail sat" x1="1052" y1="28" x2="1010" y2="68"/>
       <line class="cut" x1="1062" y1="28" x2="1052" y2="18"/>
       <line class="cut" x1="1059" y1="30" x2="1050" y2="20"/>
       <line class="head sat" x1="1110" y1="-28" x2="970" y2="52"/>
+      <line class="gap sat" x1="970" y1="52" x2="948" y2="65"/>
       <line class="tail sat" x1="948" y1="65" x2="830" y2="132"/>
       <line class="cut" x1="965" y1="63" x2="958" y2="51"/>
       <line class="cut" x1="958" y1="67" x2="951" y2="55"/>
