@@ -51,40 +51,32 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 .founder{margin:20px 0 0;max-width:62ch;color:var(--muted)}
 .founder a{color:var(--signal)}
 .scene{margin:36px 0 0}
-.scene svg{display:block;width:100%;height:auto}
-.scene .downlink line{stroke:var(--signal);stroke-width:1.2;stroke-dasharray:2 6;opacity:.6}
-.scene .downlink line.cut{stroke:#C0392B;opacity:.35}
-.scene .downlink .spark{fill:var(--marker)}
-.scene .enemy-links path{fill:none;stroke:#C0392B;stroke-width:1.4;stroke-dasharray:3 4;opacity:.8}
-.scene .other > rect{fill:var(--signal);stroke:none}
-.scene .other .lock rect{fill:#fff}
-.scene .other .lock path{stroke:#fff}
-.scene .other text{font:700 20px "IBM Plex Sans",system-ui,sans-serif;fill:#fff}
-.scene .ground{stroke:var(--grid);stroke-width:1.5}
-.scene .ant line{stroke:var(--ink);stroke-width:3;stroke-linecap:round}
-.scene .ant rect{fill:var(--ink)}
-.scene .ant .screen{fill:var(--signal)}
-.scene .ant .led{fill:var(--marker)}
-.scene .ant .vent{fill:#2E4057}
-.scene .q-arm{stroke:var(--ink);stroke-width:3;stroke-linecap:round}
-.scene .q-body{fill:var(--ink)}
-.scene .q-rotor{fill:var(--muted);opacity:.55}
-.scene .q-cam{fill:var(--marker)}
-.scene .w{fill:none;stroke:var(--signal);stroke-width:2}
-.scene .jam polyline{fill:none;stroke:var(--marker);stroke-width:1.6;stroke-linejoin:round;opacity:.8}
-.scene .defeat line{stroke:#C0392B;stroke-width:2.5;stroke-linecap:round}
-.scope{margin-top:12px !important}
+.scene svg{display:block;width:100%;height:auto;overflow:hidden}
+.scene .ln{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.scene .ln-fill{fill:var(--paper);stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round}
+.scene .hatch{stroke:var(--ink);stroke-width:.75;opacity:.6}
+.scene .ground{stroke:var(--ink);stroke-width:1;opacity:.45}
+.scene .field{fill:none;stroke:var(--marker);stroke-width:1.25;stroke-dasharray:4 6}
+.scene .link{fill:none;stroke-width:1.25}
+.scene .link.sat{stroke-dasharray:1.5 4}
+.scene .lbl{font:500 12px "IBM Plex Sans",system-ui,sans-serif;fill:var(--muted)}
+.scene .lead{stroke:var(--muted);stroke-width:.75;fill:none}
+.scene .tag rect{fill:var(--ink)}
+.scene .tag text{font:600 14px "IBM Plex Sans",system-ui,sans-serif;fill:#fff}
+.scene .tag .lk rect{fill:#fff}.scene .tag .lk path{fill:none;stroke:#fff;stroke-width:1.6}
+.scope{margin-top:4px !important}
+.wf{margin:0;background:#0E1626;border-radius:2px;overflow:hidden}
+.wf canvas{display:block;width:100%;height:auto}
+.wf-cap{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--muted);margin:6px 0 0}
+.wf-cap > span:last-child{margin-left:auto}
+.wf-cap .tag-m{display:none;align-items:center;gap:6px;background:var(--ink);color:#fff;font-weight:600;font-size:.8125rem;padding:4px 10px;border-radius:3px}
 @media (prefers-reduced-motion:no-preference){
-  .scene .jam polyline{stroke-dasharray:10 4;animation:flow 1.2s linear infinite}
-  .scene .w{opacity:.15;animation:pulse 2.4s ease-out infinite}
-  .scene .w2{animation-delay:.3s}.scene .w3{animation-delay:.6s}
-  @keyframes flow{to{stroke-dashoffset:-28}}
-  @keyframes pulse{0%{opacity:.15}25%{opacity:1}100%{opacity:.15}}
+  .scene .field{animation:breathe 3.2s ease-in-out infinite}
+  .scene .f2{animation-delay:.4s}.scene .f3{animation-delay:.8s}
+  @keyframes breathe{0%,100%{opacity:.25}50%{opacity:.9}}
 }
-@media (max-width:640px){.scope .mktext{display:none}
-.scene .other > rect{y:150px;width:400px;height:76px;rx:14px}
-.scene .other text{font-size:32px;transform:translateX(88px)}
-.scene .other .lock{transform:translate(18px,172px) scale(1.7)}}
+@media (max-width:640px){.scope .mktext{display:none}.scene .lbl{display:none}
+.scene .tag,.scene .lead{display:none}.wf-cap .tag-m{display:inline-flex}}
 footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:28px 0;margin-top:88px}
 footer a{color:#C9D2D7}
 </style>
@@ -94,117 +86,98 @@ footer a{color:#C9D2D7}
   <h1>Grey Cat Solutions</h1>
   <p class="tag">Electronic and electromagnetic systems engineering, from requirements to fielded product.</p>
   <figure class="scene" aria-hidden="true">
-    <svg viewBox="0 -70 1200 300" preserveAspectRatio="xMidYMid meet">
+    <svg viewBox="0 0 1200 250" preserveAspectRatio="xMidYMid meet">
       <defs>
-        <g id="quad">
-          <line x1="-30" y1="0" x2="30" y2="0" stroke="#14213D" stroke-width="3" stroke-linecap="round"/>
-          <line x1="-30" y1="0" x2="-30" y2="-7" stroke="#14213D" stroke-width="3" stroke-linecap="round"/>
-          <line x1="30" y1="0" x2="30" y2="-7" stroke="#14213D" stroke-width="3" stroke-linecap="round"/>
-          <ellipse cx="-30" cy="-8" rx="17" ry="2.6" fill="#4F5D66" fill-opacity="0.55"/>
-          <ellipse cx="30" cy="-8" rx="17" ry="2.6" fill="#4F5D66" fill-opacity="0.55"/>
-          <rect x="-13" y="-6" width="26" height="12" rx="4" fill="#14213D"/>
-          <line x1="-9" y1="6" x2="-14" y2="14" stroke="#14213D" stroke-width="3" stroke-linecap="round"/>
-          <line x1="9" y1="6" x2="14" y2="14" stroke="#14213D" stroke-width="3" stroke-linecap="round"/>
-          <circle cx="0" cy="8" r="2.4" fill="#D99A00"/>
-        </g>
-        <g id="sat">
-          <rect x="-9" y="-7" width="18" height="14" rx="2" fill="#14213D"/>
-          <rect x="-46" y="-6" width="32" height="12" fill="#1F7A8C"/>
-          <rect x="14" y="-6" width="32" height="12" fill="#1F7A8C"/>
-          <line x1="-14" y1="0" x2="-9" y2="0" stroke="#14213D" stroke-width="2"/>
-          <line x1="9" y1="0" x2="14" y2="0" stroke="#14213D" stroke-width="2"/>
-          <line x1="-38" y1="-6" x2="-38" y2="6" stroke="#E9EDEF"/><line x1="-30" y1="-6" x2="-30" y2="6" stroke="#E9EDEF"/><line x1="-22" y1="-6" x2="-22" y2="6" stroke="#E9EDEF"/>
-          <line x1="22" y1="-6" x2="22" y2="6" stroke="#E9EDEF"/><line x1="30" y1="-6" x2="30" y2="6" stroke="#E9EDEF"/><line x1="38" y1="-6" x2="38" y2="6" stroke="#E9EDEF"/>
-          <path d="M-6,7 Q0,16 6,7" fill="none" stroke="#14213D" stroke-width="2"/>
-        </g>
-        <g id="op">
-          <circle cx="0" cy="-44" r="6" fill="#4F5D66"/>
-          <path d="M-7,-36 L7,-36 L9,-14 L-9,-14 Z" fill="#4F5D66"/>
-          <line x1="-5" y1="-14" x2="-7" y2="0" stroke="#4F5D66" stroke-width="4" stroke-linecap="round"/>
-          <line x1="5" y1="-14" x2="7" y2="0" stroke="#4F5D66" stroke-width="4" stroke-linecap="round"/>
-          <line x1="6" y1="-33" x2="9" y2="-42" stroke="#4F5D66" stroke-width="3.5" stroke-linecap="round"/>
-          <rect x="7" y="-50" width="5" height="9" rx="1" fill="#14213D"/>
-          <line x1="10" y1="-50" x2="12" y2="-64" stroke="#14213D" stroke-width="1.5" stroke-linecap="round"/>
-        </g>
+        <linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="930" y1="186" x2="640" y2="106"><stop offset="0" stop-color="#14213D" stop-opacity=".9"/><stop offset=".55" stop-color="#14213D" stop-opacity=".55"/><stop offset="1" stop-color="#14213D" stop-opacity="0"/></linearGradient>
+        <linearGradient id="g2" gradientUnits="userSpaceOnUse" x1="930" y1="186" x2="830" y2="148"><stop offset="0" stop-color="#14213D" stop-opacity=".9"/><stop offset=".55" stop-color="#14213D" stop-opacity=".55"/><stop offset="1" stop-color="#14213D" stop-opacity="0"/></linearGradient>
+        <linearGradient id="g3" gradientUnits="userSpaceOnUse" x1="930" y1="186" x2="1010" y2="84"><stop offset="0" stop-color="#14213D" stop-opacity=".9"/><stop offset=".55" stop-color="#14213D" stop-opacity=".55"/><stop offset="1" stop-color="#14213D" stop-opacity="0"/></linearGradient>
+        <linearGradient id="g4" gradientUnits="userSpaceOnUse" x1="430" y1="34" x2="640" y2="90"><stop offset="0" stop-color="#145A68" stop-opacity=".9"/><stop offset=".55" stop-color="#145A68" stop-opacity=".55"/><stop offset="1" stop-color="#145A68" stop-opacity="0"/></linearGradient>
+        <linearGradient id="g5" gradientUnits="userSpaceOnUse" x1="430" y1="34" x2="830" y2="132"><stop offset="0" stop-color="#145A68" stop-opacity=".9"/><stop offset=".55" stop-color="#145A68" stop-opacity=".55"/><stop offset="1" stop-color="#145A68" stop-opacity="0"/></linearGradient>
+        <linearGradient id="g6" gradientUnits="userSpaceOnUse" x1="430" y1="34" x2="560" y2="202"><stop offset="0" stop-color="#145A68" stop-opacity=".9"/><stop offset=".55" stop-color="#145A68" stop-opacity=".55"/><stop offset="1" stop-color="#145A68" stop-opacity="0"/></linearGradient>
+        <linearGradient id="g7" gradientUnits="userSpaceOnUse" x1="430" y1="34" x2="640" y2="202"><stop offset="0" stop-color="#145A68" stop-opacity=".9"/><stop offset=".55" stop-color="#145A68" stop-opacity=".55"/><stop offset="1" stop-color="#145A68" stop-opacity="0"/></linearGradient>
+        <linearGradient id="g8" gradientUnits="userSpaceOnUse" x1="1110" y1="28" x2="830" y2="132"><stop offset="0" stop-color="#145A68" stop-opacity=".9"/><stop offset=".55" stop-color="#145A68" stop-opacity=".55"/><stop offset="1" stop-color="#145A68" stop-opacity="0"/></linearGradient>
+        <linearGradient id="g9" gradientUnits="userSpaceOnUse" x1="1110" y1="28" x2="1010" y2="68"><stop offset="0" stop-color="#145A68" stop-opacity=".9"/><stop offset=".55" stop-color="#145A68" stop-opacity=".55"/><stop offset="1" stop-color="#145A68" stop-opacity="0"/></linearGradient>
+        <linearGradient id="g10" gradientUnits="userSpaceOnUse" x1="560" y1="0" x2="640" y2="0"><stop offset="0" stop-color="#14213D" stop-opacity=".9"/><stop offset=".55" stop-color="#14213D" stop-opacity=".55"/><stop offset="1" stop-color="#14213D" stop-opacity="0"/></linearGradient>
       </defs>
-      <line x1="0" y1="222" x2="1200" y2="222" class="ground"/>
-      <!-- satellites and downlinks -->
-      <g class="downlink">
-        <line x1="470" y1="-44" x2="596" y2="10"/>
-        <line class="cut" x1="630" y1="25" x2="712" y2="60"/>
-        <circle class="spark" cx="613" cy="17" r="3"/>
-        <line x1="470" y1="-44" x2="711" y2="26"/>
-        <line class="cut" x1="776" y1="44" x2="934" y2="90"/>
-        <circle class="spark" cx="744" cy="35" r="3"/>
-        <line x1="1110" y1="-52" x2="1069" y2="-3"/>
-        <line class="cut" x1="1059" y1="10" x2="1032" y2="42"/>
-        <circle class="spark" cx="1064" cy="3" r="3"/>
-        <line x1="1110" y1="-52" x2="1018" y2="22"/>
-        <line class="cut" x1="994" y1="42" x2="934" y2="90"/>
-        <circle class="spark" cx="1006" cy="32" r="3"/>
-        <line x1="470" y1="-44" x2="492" y2="60"/>
-        <line class="cut" x1="498" y1="88" x2="512" y2="156"/>
-        <circle class="spark" cx="495" cy="74" r="3"/>
-        <line x1="470" y1="-44" x2="511" y2="60"/>
-        <line class="cut" x1="521" y1="88" x2="548" y2="156"/>
-        <circle class="spark" cx="516" cy="74" r="3"/>
-        <line x1="1110" y1="-52" x2="861" y2="56"/>
-        <line class="cut" x1="795" y1="85" x2="632" y2="156"/>
-        <circle class="spark" cx="828" cy="71" r="3"/>
-      </g>      <use href="#sat" transform="translate(470 -52) rotate(-8)"/>
-      <use href="#sat" transform="translate(1110 -58) rotate(10) scale(0.8)"/>
-
-      <!-- jammer: small fielded unit on the ground, shown enlarged in a callout -->
-      <g class="ant">
-        <rect x="214" y="84" width="52" height="40" rx="5"/>
-        <rect x="222" y="94" width="20" height="8" rx="1.5" class="screen"/>
-        <circle cx="254" cy="98" r="3" class="led"/>
-        <rect x="222" y="108" width="36" height="3" rx="1.5" class="vent"/>
-        <rect x="222" y="114" width="36" height="3" rx="1.5" class="vent"/>
-        <line x1="224" y1="84" x2="214" y2="44"/>
-        <line x1="240" y1="84" x2="240" y2="38"/>
-        <line x1="256" y1="84" x2="266" y2="44"/>
-      </g>      <!-- omnidirectional jamming field -->
-      <g class="waves">
-        <circle class="w w1" cx="240" cy="96" r="34"/>
-        <circle class="w w2" cx="240" cy="96" r="60"/>
-        <circle class="w w3" cx="240" cy="96" r="80"/>
+      <line class="ground" x1="0" y1="232" x2="1200" y2="232"/>
+      <path class="field f1" d="M86,232 A90,90 0 0 1 266,232"/>
+      <path class="field f2" d="M21,232 A155,155 0 0 1 331,232"/>
+      <path class="field f3" d="M-44,232 A220,220 0 0 1 396,232"/>
+      <line class="link c2" x1="930" y1="186" x2="640" y2="106" stroke="url(#g1)"/>
+      <line class="link c2" x1="930" y1="186" x2="830" y2="148" stroke="url(#g2)"/>
+      <line class="link c2" x1="930" y1="186" x2="1010" y2="84" stroke="url(#g3)"/>
+      <line class="link sat" x1="430" y1="34" x2="640" y2="90" stroke="url(#g4)"/>
+      <line class="link sat" x1="430" y1="34" x2="830" y2="132" stroke="url(#g5)"/>
+      <line class="link sat" x1="430" y1="34" x2="560" y2="202" stroke="url(#g6)"/>
+      <line class="link sat" x1="430" y1="34" x2="640" y2="202" stroke="url(#g7)"/>
+      <line class="link sat" x1="1110" y1="28" x2="830" y2="132" stroke="url(#g8)"/>
+      <line class="link sat" x1="1110" y1="28" x2="1010" y2="68" stroke="url(#g9)"/>
+      <path class="link" d="M564,200 Q600.0,170 636,200" stroke="url(#g10)"/>
+      <g transform="translate(430 26) rotate(-6) scale(1.0)">
+        <rect class="ln-fill" x="-8" y="-6" width="16" height="12" rx="1.5"/>
+        <path class="ln" d="M-8,0 H-14 M8,0 H14 M-4,6 Q0,13 4,6"/>
+        <rect class="ln-fill" x="-44" y="-6" width="30" height="12"/><rect class="ln-fill" x="14" y="-6" width="30" height="12"/>
+        <path class="hatch" d="M-36,-6 V6 M-29,-6 V6 M-22,-6 V6 M22,-6 V6 M29,-6 V6 M36,-6 V6"/>
       </g>
-      <!-- jamming toward the UAS -->
-      <g class="jam">
-        <polyline points="276.0,92.0 290.3,96.3 303.9,85.7 318.4,95.1 332.0,84.4 346.6,93.8 360.2,83.1 374.7,92.5 388.3,81.8 402.8,91.2 416.4,80.6 430.9,89.9 444.5,79.3 459.1,88.6 472.7,78.0 487.2,87.3 500.8,76.7 515.3,86.0 528.9,75.4 543.5,84.7 557.1,74.1 571.6,83.4 585.2,72.8 599.7,82.2 613.3,71.5 627.8,80.9 641.4,70.2 656.0,79.6 669.6,68.9 684.1,78.3 697.7,67.7 712.0,72.0"/>
-        <polyline points="276.0,92.0 290.2,97.2 304.6,87.3 318.7,97.5 333.1,87.7 347.2,97.9 361.6,88.0 375.8,98.2 390.1,88.4 404.3,98.6 418.7,88.7 432.8,98.9 447.2,89.1 461.3,99.3 475.7,89.4 489.9,99.6 504.2,89.8 518.4,100.0 532.8,90.1 546.9,100.3 561.3,90.5 575.4,100.7 589.8,90.8 603.9,101.0 618.3,91.2 632.5,101.3 646.8,91.5 661.0,101.7 675.4,91.9 689.5,102.0 703.9,92.2 718.0,102.4 732.4,92.6 746.5,102.7 760.9,92.9 775.1,103.1 789.5,93.3 803.6,103.4 818.0,93.6 832.1,103.8 846.5,94.0 860.6,104.1 875.0,94.3 889.2,104.5 903.5,94.7 917.7,104.8 932.0,100.0"/>
-        <polyline points="276.0,92.0 290.3,96.3 303.7,85.5 318.3,94.8 331.7,84.0 346.3,93.3 359.7,82.6 374.3,91.8 387.7,81.1 402.3,90.3 415.7,79.6 430.3,88.8 443.7,78.1 458.3,87.4 471.7,76.6 486.3,85.9 499.7,75.2 514.3,84.4 527.7,73.7 542.3,82.9 555.7,72.2 570.3,81.4 583.7,70.7 598.3,80.0 611.7,69.2 626.3,78.5 639.7,67.7 654.3,77.0 667.7,66.3 682.3,75.5 695.7,64.8 710.3,74.0 723.7,63.3 738.3,72.5 751.7,61.8 766.3,71.1 779.7,60.3 794.3,69.6 807.7,58.9 822.3,68.1 835.7,57.4 850.3,66.6 863.7,55.9 878.3,65.1 891.7,54.4 906.3,63.7 919.7,52.9 934.3,62.2 947.7,51.5 962.3,60.7 975.7,50.0 990.3,59.2 1003.7,48.5 1018.3,57.7 1032.0,52.0"/>
-        <polyline points="270.0,120.0 281.4,126.8 295.6,122.0 306.1,132.7 320.3,127.9 330.8,138.6 345.0,133.8 355.5,144.5 369.8,139.6 380.2,150.4 394.5,145.5 405.0,156.2 419.2,151.4 429.7,162.1 443.9,157.3 454.4,168.0 468.6,163.2 480.0,170.0"/>
-        <polyline points="204.0,112.0 191.3,113.0 183.3,125.1 169.0,122.5 161.0,134.5 146.7,131.9 138.7,144.0 124.4,141.3 116.4,153.4 102.2,150.7 94.1,162.8 79.9,160.2 71.8,172.3 57.6,169.6 48.0,178.0"/>
+      <g transform="translate(1110 20) rotate(8) scale(0.8)">
+        <rect class="ln-fill" x="-8" y="-6" width="16" height="12" rx="1.5"/>
+        <path class="ln" d="M-8,0 H-14 M8,0 H14 M-4,6 Q0,13 4,6"/>
+        <rect class="ln-fill" x="-44" y="-6" width="30" height="12"/><rect class="ln-fill" x="14" y="-6" width="30" height="12"/>
+        <path class="hatch" d="M-36,-6 V6 M-29,-6 V6 M-22,-6 V6 M22,-6 V6 M29,-6 V6 M36,-6 V6"/>
       </g>
-      <!-- other applications -->
-      <g class="other">
-        <rect x="0" y="170" width="256" height="50" rx="10"/>
-        <text x="142" y="202" text-anchor="middle">Other mission areas</text>
-        <g class="lock" transform="translate(20 184)"><rect x="0" y="7" width="14" height="11" rx="2"/><path d="M3,7 V4 a4,4 0 0 1 8,0 V7" fill="none" stroke-width="2"/></g>
+      <g transform="translate(640 96) scale(1.0)">
+        <path class="ln" d="M-30,0 H30 M-30,0 V-6 M30,0 V-6 M-8,6 L-13,14 M8,6 L13,14"/>
+        <ellipse class="ln" cx="-30" cy="-7" rx="16" ry="2.5"/><ellipse class="ln" cx="30" cy="-7" rx="16" ry="2.5"/>
+        <rect class="ln-fill" x="-12" y="-5" width="24" height="11" rx="3"/>
       </g>
-      <!-- links defeated -->
-      <g class="defeat">
-        <g transform="translate(740 50)"><line x1="-5" y1="-5" x2="5" y2="5"/><line x1="5" y1="-5" x2="-5" y2="5"/></g>
-        <g transform="translate(988 78)"><line x1="-5" y1="-5" x2="5" y2="5"/><line x1="5" y1="-5" x2="-5" y2="5"/></g>
-        <g transform="translate(1060 30)"><line x1="-5" y1="-5" x2="5" y2="5"/><line x1="5" y1="-5" x2="-5" y2="5"/></g>
+      <g transform="translate(830 138) scale(0.85)">
+        <path class="ln" d="M-30,0 H30 M-30,0 V-6 M30,0 V-6 M-8,6 L-13,14 M8,6 L13,14"/>
+        <ellipse class="ln" cx="-30" cy="-7" rx="16" ry="2.5"/><ellipse class="ln" cx="30" cy="-7" rx="16" ry="2.5"/>
+        <rect class="ln-fill" x="-12" y="-5" width="24" height="11" rx="3"/>
       </g>
-      <!-- adversary personnel with radios -->
-      <g class="enemy-links">
-        <path d="M512,160 Q542,140 572,160"/>
-        <path d="M572,160 Q602,140 632,160"/>
+      <g transform="translate(1010 74) scale(0.75)">
+        <path class="ln" d="M-30,0 H30 M-30,0 V-6 M30,0 V-6 M-8,6 L-13,14 M8,6 L13,14"/>
+        <ellipse class="ln" cx="-30" cy="-7" rx="16" ry="2.5"/><ellipse class="ln" cx="30" cy="-7" rx="16" ry="2.5"/>
+        <rect class="ln-fill" x="-12" y="-5" width="24" height="11" rx="3"/>
       </g>
-      <use href="#op" transform="translate(500 222)"/>
-      <use href="#op" transform="translate(560 222) scale(-1 1)"/>
-      <use href="#op" transform="translate(620 222)"/>
-      <g class="defeat">
-        <g transform="translate(542 136)"><line x1="-5" y1="-5" x2="5" y2="5"/><line x1="5" y1="-5" x2="-5" y2="5"/></g>
-        <g transform="translate(602 136)"><line x1="-5" y1="-5" x2="5" y2="5"/><line x1="5" y1="-5" x2="-5" y2="5"/></g>
+      <g transform="translate(560 232)">
+        <rect class="ln-fill" x="-7" y="-26" width="14" height="22" rx="2"/>
+        <path class="ln" d="M3,-26 L5,-44 M-4,-18 H4 M-4,-13 H4"/>
+        <path class="ln" d="M-12,0 H12"/>
       </g>
-      <use href="#quad" x="740" y="72"/>
-      <use href="#quad" x="960" y="100" transform="translate(960 100) scale(0.85) translate(-960 -100)"/>
-      <use href="#quad" x="1056" y="52" transform="translate(1056 52) scale(0.72) translate(-1056 -52)"/>
+      <g transform="translate(640 232)">
+        <rect class="ln-fill" x="-7" y="-26" width="14" height="22" rx="2"/>
+        <path class="ln" d="M3,-26 L5,-44 M-4,-18 H4 M-4,-13 H4"/>
+        <path class="ln" d="M-12,0 H12"/>
+      </g>
+      <g transform="translate(930 232)">
+        <rect class="ln-fill" x="-18" y="-16" width="36" height="16" rx="2"/>
+        <path class="ln" d="M0,-16 V-40 M-10,-46 Q0,-36 10,-46 M0,-41 V-46"/>
+        <path class="ln" d="M-12,-9 H-2 M4,-9 H12"/>
+      </g>
+      <!-- jammer -->
+      <g transform="translate(176 232)">
+        <rect class="ln-fill" x="-22" y="-26" width="44" height="26" rx="3"/>
+        <path class="ln" d="M-12,-26 L-18,-56 M0,-26 V-60 M12,-26 L18,-56 M-14,-17 H2 M-14,-11 H2"/>
+        <circle cx="12" cy="-15" r="3" fill="var(--marker)"/>
+      </g>
+      <!-- callouts -->
+      <path class="lead" d="M200,192 L236,158 H286"/>
+      <text class="lbl" x="290" y="162">Jammer</text>
+      <path class="lead" d="M652,84 L680,58 H716"/>
+      <text class="lbl" x="720" y="62">UAS</text>
+      <path class="lead" d="M462,30 L500,14 H540"/>
+      <text class="lbl" x="544" y="18">GNSS / SATCOM</text>
+      <path class="lead" d="M884,170 L852,196 H806"/>
+      <text class="lbl" x="802" y="200" text-anchor="end">C2 link</text>
+      <path class="lead" d="M600,174 L600,148 H640"/>
+      <text class="lbl" x="644" y="152">Comms</text>
+      <!-- other mission areas -->
+      <g class="tag">
+        <rect x="1004" y="202" width="196" height="26" rx="3"/>
+        <g class="lk" transform="translate(1014 207)"><rect x="0" y="6" width="11" height="9" rx="1.5"/><path d="M2.5,6 V4 a3,3 0 0 1 6,0 V6"/></g>
+        <text x="1032" y="220">Other mission areas</text>
+      </g>
     </svg>
   </figure>
   <figure class="scope" aria-hidden="true">
@@ -221,6 +194,8 @@ footer a{color:#C9D2D7}
       </g>
     </svg>
   </figure>
+  <figure class="wf" aria-hidden="true"><canvas id="wf" width="600" height="90"></canvas></figure>
+  <p class="wf-cap"><span class="tag-m"><svg width="11" height="13" viewBox="0 0 11 13" aria-hidden="true"><rect x="0" y="5" width="11" height="8" rx="1.5" fill="#fff"/><path d="M2.5,5 V3.5 a3,3 0 0 1 6,0 V5" fill="none" stroke="#fff" stroke-width="1.6"/></svg>Other mission areas</span><span aria-hidden="true">Waterfall, time ↓</span></p>
 </header>
 
 <main>
@@ -256,5 +231,17 @@ footer a{color:#C9D2D7}
 </main>
 
 <footer><div class="wrap">© 2024–2026 Grey Cat Solutions LLC · CAGE 04A24 · <a href="mailto:contact@greycatengsolutions.com">contact@greycatengsolutions.com</a></div></footer>
+<script>
+(()=>{const c=document.getElementById('wf');if(!c)return;const x=c.getContext('2d'),W=c.width,H=c.height;
+const em=[[.18,.012,.35,1],[.44,.006,.55,1],[.62,.004,.95,.6],[.81,.009,.45,.8]];
+const stops=[[14,22,38],[20,90,104],[63,167,181],[232,184,74]];
+function cm(v){v=Math.max(0,Math.min(1,v))*3;const i=Math.min(2,Math.floor(v)),f=v-i,a=stops[i],b=stops[i+1];return[a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,a[2]+(b[2]-a[2])*f]}
+let t=0;function row(){const img=x.createImageData(W,1);t++;for(let i=0;i<W;i++){const u=i/W;let v=.08+Math.random()*.1;
+for(const[c0,w,a,duty]of em){const on=duty>=1||((Math.sin(t*.09+c0*40)+1)/2)<duty;if(on)v+=a*Math.exp(-(((u-c0)/(w*1.4))**2)/2)*(.85+Math.random()*.3)}
+const k=cm(v);img.data.set([k[0],k[1],k[2],255],i*4)}return img}
+function step(){x.drawImage(c,0,0,W,H-1,0,1,W,H-1);x.putImageData(row(),0,0)}
+for(let y=0;y<H;y++)step();
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(step,90);})();
+</script>
 </body>
 </html>
