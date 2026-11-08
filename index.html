@@ -256,15 +256,19 @@ footer a{color:#C9D2D7}
 <footer><div class="wrap">© 2024–2026 Grey Cat Solutions LLC · CAGE 04A24 · <a href="mailto:contact@greycatengsolutions.com">contact@greycatengsolutions.com</a></div></footer>
 <script>
 (()=>{const c=document.getElementById('wf');if(!c)return;const x=c.getContext('2d'),W=c.width,H=c.height,sc=document.querySelector('.scene');
-const em=[[.18,.012,.35,1],[.44,.006,.55,1],[.62,.004,.95,.6],[.81,.009,.45,.8]];
+// c:center, w:width, a:level, d:duty, js:J/S in dB, hop:[lo,hi,channels,dwell]
+const em=[{c:.18,w:.012,a:.35,d:1,js:1},{c:.44,w:.004,a:.55,d:1,js:4,hop:[.34,.54,9,5]},{c:.62,w:.004,a:.95,d:.6,js:10},{c:.81,w:.009,a:.45,d:.8,js:6}];
+const DB=40; // display span in dB
+function hopc(e){const[lo,hi,n,dw]=e.hop,k=Math.floor(t/dw);const r=Math.floor((Math.abs(Math.sin(k*12.9898+78.233)*43758.5453)%1)*n);return lo+(hi-lo)*r/(n-1)}
 const st=[[14,22,38],[20,90,104],[63,167,181],[232,184,74]];
 function cm(v){v=Math.max(0,Math.min(1,v))*3;const i=Math.min(2,Math.floor(v)),f=v-i,a=st[i],b=st[i+1];return[a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,a[2]+(b[2]-a[2])*f]}
 const CYC=150,OFF=60;let t=0;
 let lvl=0;const avg=new Float32Array(W).fill(.13),javg=new Float32Array(W),jt=document.querySelector('.scope .jtrace'),jf=document.querySelector('.scope .jfill'),tr=document.querySelector('.scope .trace'),fa=document.querySelector('.scope .fillarea');
 function draw(){if(!tr)return;let pts=[];for(let i=0;i<W;i+=2){const y=Math.min(218,Math.max(30,198-(avg[i]-.13)*140));pts.push((i/W*1200).toFixed(1)+','+y.toFixed(1))}const P=pts.join(' ');tr.setAttribute('points',P);fa&&fa.setAttribute('points','0,220 '+P+' 1200,220');let q=[];for(let i=0;i<W;i+=2){q.push((i/W*1200).toFixed(1)+','+Math.min(220,Math.max(30,198-javg[i]*140)).toFixed(1))}const Q=q.join(' ');jt&&jt.setAttribute('points',Q);jf&&jf.setAttribute('points','0,198 '+Q+' 1200,198')}
 function row(){const img=x.createImageData(W,1);for(let i=0;i<W;i++){const u=i/W;let v=.08+Math.random()*.1+.03*lvl,j=0;
-for(const[c0,w,a,d]of em){const on=d>=1||((Math.sin(t*.09+c0*40)+1)/2)<d;if(on)v+=a*Math.exp(-(((u-c0)/(w*1.4))**2)/2)*(.85+Math.random()*.3);
-j+=lvl*a*1.25*(.9+Math.random()*.2)*Math.exp(-(((u-c0)/(w*1.4*1.6))**2)/2)}
+for(const e of em){const c0=e.hop?hopc(e):e.c,on=e.d>=1||((Math.sin(t*.09+e.c*40)+1)/2)<e.d;
+if(on)v+=e.a*Math.exp(-(((u-c0)/(e.w*1.4))**2)/2)*(.85+Math.random()*.3);
+j+=lvl*(e.a+e.js/DB)*(.95+Math.random()*.1)*Math.exp(-(((u-c0)/(e.w*1.4*1.6))**2)/2)}
 avg[i]=avg[i]*.75+v*.25;javg[i]=javg[i]*.45+j*.55;
 const k=cm(v),f=Math.min(1,j*2.2);img.data.set([k[0]+(245-k[0])*f,k[1]+(130-k[1])*f,k[2]+(50-k[2])*f,255],i*4)}return img}
 function step(){t++;const jam=(t%CYC)>=OFF;lvl+=((jam?1:0)-lvl)*(jam?.3:.12);sc&&sc.classList.toggle('off',!jam);x.drawImage(c,0,0,W,H-1,0,1,W,H-1);x.putImageData(row(),0,0);if(t%2===0)draw()}
