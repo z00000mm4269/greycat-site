@@ -59,14 +59,15 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 .scene .q-body{fill:var(--ink)}
 .scene .q-rotor{fill:var(--muted);opacity:.55}
 .scene .q-cam{fill:var(--marker)}
-.scene .w{fill:none;stroke:var(--signal);stroke-width:2.5;stroke-linecap:round}
-.scene .links line{stroke:var(--signal);stroke-width:1.5;stroke-dasharray:6 7;opacity:.7}
+.scene .w{fill:none;stroke:var(--signal);stroke-width:2}
+.scene .jam polyline{fill:none;stroke:var(--marker);stroke-width:1.6;stroke-linejoin:round;opacity:.8}
+.scene .defeat line{stroke:#C0392B;stroke-width:2.5;stroke-linecap:round}
 .scope{margin-top:12px !important}
 @media (prefers-reduced-motion:no-preference){
-  .scene .links line{animation:flow 1.6s linear infinite}
+  .scene .jam polyline{stroke-dasharray:10 4;animation:flow 1.2s linear infinite}
   .scene .w{opacity:.15;animation:pulse 2.4s ease-out infinite}
   .scene .w2{animation-delay:.3s}.scene .w3{animation-delay:.6s}
-  @keyframes flow{to{stroke-dashoffset:-26}}
+  @keyframes flow{to{stroke-dashoffset:-28}}
   @keyframes pulse{0%{opacity:.15}25%{opacity:1}100%{opacity:.15}}
 }
 @media (max-width:640px){.scope .mktext{display:none}}
@@ -104,29 +105,35 @@ footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:0 0 32px}
         <circle cx="7" cy="192" r="1.8" fill="#C0392B"/>
         <line x1="14" y1="186" x2="22" y2="150" stroke="#14213D" stroke-width="2" stroke-linecap="round"/>
       </g>
-      <!-- antenna: mast, tripod, Yagi -->
+      <!-- jammer: tripod, mast, omni whips -->
       <g class="ant">
         <line x1="140" y1="222" x2="160" y2="196"/><line x1="180" y1="222" x2="160" y2="196"/>
-        <line x1="160" y1="222" x2="160" y2="96"/>
-        <line x1="148" y1="104" x2="236" y2="78"/>
-        <line x1="156" y1="88" x2="160" y2="116"/>
-        <line x1="178" y1="83" x2="181" y2="107"/>
-        <line x1="198" y1="78" x2="200" y2="99"/>
-        <line x1="217" y1="73" x2="218" y2="92"/>
-        <line x1="233" y1="69" x2="234" y2="86"/>
-        <rect x="150" y="150" width="20" height="26" rx="2"/>
+        <line x1="160" y1="222" x2="160" y2="104"/>
+        <rect x="148" y="150" width="24" height="30" rx="2"/>
+        <rect x="150" y="98" width="20" height="8" rx="2"/>
+        <line x1="154" y1="98" x2="144" y2="56"/>
+        <line x1="160" y1="98" x2="160" y2="50"/>
+        <line x1="166" y1="98" x2="176" y2="56"/>
       </g>
-      <!-- RF wavefronts -->
+      <!-- omnidirectional jamming field -->
       <g class="waves">
-        <path class="w w1" d="M262,52 A40,40 0 0 1 262,104"/>
-        <path class="w w2" d="M288,40 A64,64 0 0 1 288,116"/>
-        <path class="w w3" d="M314,28 A88,88 0 0 1 314,128"/>
+        <circle class="w w1" cx="160" cy="92" r="34"/>
+        <circle class="w w2" cx="160" cy="92" r="60"/>
+        <circle class="w w3" cx="160" cy="92" r="86"/>
       </g>
-      <!-- links to each quad -->
-      <g class="links">
-        <line x1="240" y1="77" x2="706" y2="72"/>
-        <line x1="240" y1="77" x2="868" y2="128"/>
-        <line x1="240" y1="77" x2="1024" y2="52"/>
+      <!-- jamming toward the UAS -->
+      <g class="jam">
+        <polyline points="196.0,92.0 210.5,96.4 224.5,85.9 239.2,95.3 253.1,84.8 267.9,94.2 281.8,83.7 296.5,93.1 310.5,82.6 325.2,92.0 339.1,81.4 353.9,90.9 367.8,80.3 382.5,89.8 396.5,79.2 411.2,88.7 425.1,78.1 439.9,87.6 453.8,77.0 468.5,86.4 482.5,75.9 497.2,85.3 511.1,74.8 525.9,84.2 539.8,73.7 554.5,83.1 568.5,72.6 583.2,82.0 597.1,71.4 611.9,80.9 625.8,70.3 640.5,79.8 654.5,69.2 669.2,78.7 683.1,68.1 697.9,77.6 712.0,72.0"/>
+        <polyline points="196.0,92.0 209.8,97.7 224.4,88.5 238.0,99.2 252.6,90.0 266.2,100.7 280.8,91.5 294.3,102.2 308.9,93.0 322.5,103.7 337.1,94.5 350.7,105.2 365.3,96.0 378.8,106.7 393.4,97.5 407.0,108.2 421.6,99.0 435.2,109.7 449.8,100.5 463.3,111.2 477.9,102.0 491.5,112.7 506.1,103.5 519.7,114.2 534.3,105.0 547.8,115.7 562.4,106.5 576.0,117.2 590.6,108.0 604.2,118.7 618.8,109.5 632.3,120.2 646.9,111.0 660.5,121.7 675.1,112.5 688.7,123.2 703.3,114.0 716.8,124.7 731.4,115.5 745.0,126.2 759.6,117.0 773.2,127.7 787.8,118.5 801.3,129.2 815.9,120.0 829.5,130.7 844.1,121.5 857.7,132.2 872.0,128.0"/>
+        <polyline points="196.0,92.0 210.4,96.3 224.1,85.6 238.7,95.0 252.4,84.3 267.1,93.6 280.8,82.9 295.4,92.2 309.1,81.6 323.8,90.9 337.5,80.2 352.1,89.5 365.8,78.9 380.4,88.2 394.1,77.5 408.8,86.8 422.5,76.2 437.1,85.5 450.8,74.8 465.5,84.1 479.2,73.4 493.8,82.8 507.5,72.1 522.1,81.4 535.8,70.7 550.5,80.0 564.2,69.4 578.8,78.7 592.5,68.0 607.2,77.3 620.8,66.7 635.5,76.0 649.2,65.3 663.8,74.6 677.5,64.0 692.2,73.3 705.9,62.6 720.5,71.9 734.2,61.2 748.8,70.6 762.5,59.9 777.2,69.2 790.9,58.5 805.5,67.8 819.2,57.2 833.9,66.5 847.6,55.8 862.2,65.1 875.9,54.5 890.5,63.8 904.2,53.1 918.9,62.4 932.6,51.8 947.2,61.1 960.9,50.4 975.6,59.7 989.3,49.0 1003.9,58.4 1017.6,47.7 1032.0,52.0"/>
+        <polyline points="130.0,112.0 117.2,117.1 112.0,131.6 96.7,133.6 91.5,148.1 76.2,150.1 71.0,164.6 55.7,166.6 48.0,178.0"/>
+      </g>
+      <!-- links defeated -->
+      <g class="defeat">
+        <g transform="translate(740 50)"><line x1="-5" y1="-5" x2="5" y2="5"/><line x1="5" y1="-5" x2="-5" y2="5"/></g>
+        <g transform="translate(900 106)"><line x1="-5" y1="-5" x2="5" y2="5"/><line x1="5" y1="-5" x2="-5" y2="5"/></g>
+        <g transform="translate(1060 30)"><line x1="-5" y1="-5" x2="5" y2="5"/><line x1="5" y1="-5" x2="-5" y2="5"/></g>
+        <g transform="translate(40 150)"><line x1="-5" y1="-5" x2="5" y2="5"/><line x1="5" y1="-5" x2="-5" y2="5"/></g>
       </g>
       <use href="#quad" x="740" y="72"/>
       <use href="#quad" x="900" y="128" transform="translate(900 128) scale(0.85) translate(-900 -128)"/>
