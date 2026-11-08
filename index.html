@@ -60,7 +60,7 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 .scene .us .ln,.scene .us .ln-fill{stroke-width:2.6}
 .scene .us .ln-fill{fill:var(--ink)}
 .scene .us .slot{stroke:var(--paper);stroke-width:2;stroke-linecap:round}
-.scene .field{fill:none;stroke:var(--marker);stroke-width:1.8;stroke-dasharray:6 6;opacity:.85;transition:opacity .6s}
+.scene .field{fill:none;stroke:var(--marker);stroke-width:3;stroke-dasharray:10 7;stroke-linecap:round;opacity:1;transition:opacity .6s}
 .scene .head{stroke-width:1.4;fill:none}
 .scene .head.c2{stroke:var(--ink)}.scene .head.sat{stroke:var(--signal);stroke-dasharray:1.5 4}
 .scene .tail{stroke-width:1.2;fill:none;opacity:.12;transition:opacity .6s}
@@ -72,7 +72,7 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 .scene .tag rect{fill:var(--ink)}
 .scene .tag text{font:600 14px "IBM Plex Sans",system-ui,sans-serif;fill:#fff}
 .scene .tag .lk rect{fill:#fff}.scene .tag .lk path{fill:none;stroke:#fff;stroke-width:1.6}
-.scene.off .field{opacity:.08}.scene.off .tail{opacity:.85}.scene.off .cut{opacity:0}
+.scene.off .field{opacity:.12}.scene.off .tail{opacity:.85}.scene.off .cut{opacity:0}
 .wf{margin:4px 0 0;background:#0E1626;border-radius:2px;overflow:hidden}
 .wf canvas{display:block;width:100%;height:auto}
 .wf-cap{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.75rem;color:var(--muted);margin:6px 0 0}
@@ -262,7 +262,7 @@ const CYC=150,OFF=60;let t=0;
 let lvl=0;const avg=new Float32Array(W).fill(.13),javg=new Float32Array(W),jt=document.querySelector('.scope .jtrace'),jf=document.querySelector('.scope .jfill'),tr=document.querySelector('.scope .trace'),fa=document.querySelector('.scope .fillarea');
 function draw(){if(!tr)return;let pts=[];for(let i=0;i<W;i+=2){const y=Math.min(218,Math.max(14,198-(avg[i]-.13)*230));pts.push((i/W*1200).toFixed(1)+','+y.toFixed(1))}const P=pts.join(' ');tr.setAttribute('points',P);fa&&fa.setAttribute('points','0,220 '+P+' 1200,220');let q=[];for(let i=0;i<W;i+=2){q.push((i/W*1200).toFixed(1)+','+Math.min(220,Math.max(14,220-javg[i]*200)).toFixed(1))}const Q=q.join(' ');jt&&jt.setAttribute('points',Q);jf&&jf.setAttribute('points','0,220 '+Q+' 1200,220')}
 function row(){const img=x.createImageData(W,1);for(let i=0;i<W;i++){const u=i/W;let v=.08+Math.random()*.1+.03*lvl,j=0;
-for(const[c0,w,a,d]of em){const on=d>=1||((Math.sin(t*.09+c0*40)+1)/2)<d;if(on)v+=a*(1-.8*lvl)*Math.exp(-(((u-c0)/(w*1.4))**2)/2)*(.85+Math.random()*.3);
+for(const[c0,w,a,d]of em){const on=d>=1||((Math.sin(t*.09+c0*40)+1)/2)<d;if(on)v+=a*Math.exp(-(((u-c0)/(w*1.4))**2)/2)*(.85+Math.random()*.3);
 j+=lvl*(.6+Math.random()*.3)*Math.exp(-(((u-c0)/.026)**2)/2)}
 avg[i]=avg[i]*.75+v*.25;javg[i]=javg[i]*.75+j*.25;
 const k=cm(v),f=Math.min(1,j*1.5);img.data.set([k[0]+(245-k[0])*f,k[1]+(130-k[1])*f,k[2]+(50-k[2])*f,255],i*4)}return img}
