@@ -56,27 +56,32 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 .scene .ln-fill{fill:var(--paper);stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round}
 .scene .hatch{stroke:var(--ink);stroke-width:.75;opacity:.6}
 .scene .ground{stroke:var(--ink);stroke-width:1;opacity:.45}
-.scene .field{fill:none;stroke:var(--marker);stroke-width:1.25;stroke-dasharray:4 6}
-.scene .link{fill:none;stroke-width:1.25}
-.scene .link.sat{stroke-dasharray:1.5 4}
+.scene .us .ln,.scene .us .ln-fill{stroke-width:2.6}
+.scene .us .ln-fill{fill:var(--ink)}
+.scene .us .slot{stroke:var(--paper);stroke-width:2;stroke-linecap:round}
+.scene .field{fill:none;stroke:var(--marker);stroke-width:1.8;stroke-dasharray:6 6;opacity:.85;transition:opacity .6s}
+.scene .head{stroke-width:1.4;fill:none}
+.scene .head.c2{stroke:var(--ink)}.scene .head.sat{stroke:var(--signal);stroke-dasharray:1.5 4}
+.scene .tail{stroke-width:1.2;fill:none;opacity:.12;transition:opacity .6s}
+.scene .tail.c2{stroke:var(--ink)}.scene .tail.sat{stroke:var(--signal);stroke-dasharray:1.5 4}
+.scene .cut{stroke:var(--marker);stroke-width:2.2;stroke-linecap:round;opacity:1;transition:opacity .6s}
 .scene .lbl{font:500 12px "IBM Plex Sans",system-ui,sans-serif;fill:var(--muted)}
+.scene .lbl.us-l{font:700 15px "IBM Plex Sans",system-ui,sans-serif;fill:var(--ink)}
 .scene .lead{stroke:var(--muted);stroke-width:.75;fill:none}
 .scene .tag rect{fill:var(--ink)}
 .scene .tag text{font:600 14px "IBM Plex Sans",system-ui,sans-serif;fill:#fff}
 .scene .tag .lk rect{fill:#fff}.scene .tag .lk path{fill:none;stroke:#fff;stroke-width:1.6}
-.scope{margin-top:4px !important}
-.wf{margin:0;background:#0E1626;border-radius:2px;overflow:hidden}
+.scene.off .field{opacity:.08}.scene.off .tail{opacity:.85}.scene.off .cut{opacity:0}
+.wf{margin:4px 0 0;background:#0E1626;border-radius:2px;overflow:hidden}
 .wf canvas{display:block;width:100%;height:auto}
-.wf-cap{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--muted);margin:6px 0 0}
+.wf-cap{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.75rem;color:var(--muted);margin:6px 0 0}
 .wf-cap > span:last-child{margin-left:auto}
 .wf-cap .tag-m{display:none;align-items:center;gap:6px;background:var(--ink);color:#fff;font-weight:600;font-size:.8125rem;padding:4px 10px;border-radius:3px}
-@media (prefers-reduced-motion:no-preference){
-  .scene .field{animation:breathe 3.2s ease-in-out infinite}
-  .scene .f2{animation-delay:.4s}.scene .f3{animation-delay:.8s}
-  @keyframes breathe{0%,100%{opacity:.25}50%{opacity:.9}}
-}
-@media (max-width:640px){.scope .mktext{display:none}.scene .lbl{display:none}
-.scene .tag,.scene .lead{display:none}.wf-cap .tag-m{display:inline-flex}}
+.scope{margin-top:6px !important}
+@media (max-width:640px){.scope .mktext{display:none}.scene .lbl:not(.us-l){display:none}
+.scene .lbl.us-l{font-size:30px}
+.scene .lead:not(.us-lead){display:none}
+.scene .tag{transform:translate(290px,134px) scale(1.8) translate(-290px,-134px)}}
 footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:28px 0;margin-top:88px}
 footer a{color:#C9D2D7}
 </style>
@@ -87,32 +92,48 @@ footer a{color:#C9D2D7}
   <p class="tag">Electronic and electromagnetic systems engineering, from requirements to fielded product.</p>
   <figure class="scene" aria-hidden="true">
     <svg viewBox="0 0 1200 250" preserveAspectRatio="xMidYMid meet">
-      <defs>
-        <linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="930" y1="186" x2="640" y2="106"><stop offset="0" stop-color="#14213D" stop-opacity=".9"/><stop offset=".55" stop-color="#14213D" stop-opacity=".55"/><stop offset="1" stop-color="#14213D" stop-opacity="0"/></linearGradient>
-        <linearGradient id="g2" gradientUnits="userSpaceOnUse" x1="930" y1="186" x2="830" y2="148"><stop offset="0" stop-color="#14213D" stop-opacity=".9"/><stop offset=".55" stop-color="#14213D" stop-opacity=".55"/><stop offset="1" stop-color="#14213D" stop-opacity="0"/></linearGradient>
-        <linearGradient id="g3" gradientUnits="userSpaceOnUse" x1="930" y1="186" x2="1010" y2="84"><stop offset="0" stop-color="#14213D" stop-opacity=".9"/><stop offset=".55" stop-color="#14213D" stop-opacity=".55"/><stop offset="1" stop-color="#14213D" stop-opacity="0"/></linearGradient>
-        <linearGradient id="g4" gradientUnits="userSpaceOnUse" x1="430" y1="34" x2="640" y2="90"><stop offset="0" stop-color="#145A68" stop-opacity=".9"/><stop offset=".55" stop-color="#145A68" stop-opacity=".55"/><stop offset="1" stop-color="#145A68" stop-opacity="0"/></linearGradient>
-        <linearGradient id="g5" gradientUnits="userSpaceOnUse" x1="430" y1="34" x2="830" y2="132"><stop offset="0" stop-color="#145A68" stop-opacity=".9"/><stop offset=".55" stop-color="#145A68" stop-opacity=".55"/><stop offset="1" stop-color="#145A68" stop-opacity="0"/></linearGradient>
-        <linearGradient id="g6" gradientUnits="userSpaceOnUse" x1="430" y1="34" x2="560" y2="202"><stop offset="0" stop-color="#145A68" stop-opacity=".9"/><stop offset=".55" stop-color="#145A68" stop-opacity=".55"/><stop offset="1" stop-color="#145A68" stop-opacity="0"/></linearGradient>
-        <linearGradient id="g7" gradientUnits="userSpaceOnUse" x1="430" y1="34" x2="640" y2="202"><stop offset="0" stop-color="#145A68" stop-opacity=".9"/><stop offset=".55" stop-color="#145A68" stop-opacity=".55"/><stop offset="1" stop-color="#145A68" stop-opacity="0"/></linearGradient>
-        <linearGradient id="g8" gradientUnits="userSpaceOnUse" x1="1110" y1="28" x2="830" y2="132"><stop offset="0" stop-color="#145A68" stop-opacity=".9"/><stop offset=".55" stop-color="#145A68" stop-opacity=".55"/><stop offset="1" stop-color="#145A68" stop-opacity="0"/></linearGradient>
-        <linearGradient id="g9" gradientUnits="userSpaceOnUse" x1="1110" y1="28" x2="1010" y2="68"><stop offset="0" stop-color="#145A68" stop-opacity=".9"/><stop offset=".55" stop-color="#145A68" stop-opacity=".55"/><stop offset="1" stop-color="#145A68" stop-opacity="0"/></linearGradient>
-        <linearGradient id="g10" gradientUnits="userSpaceOnUse" x1="560" y1="0" x2="640" y2="0"><stop offset="0" stop-color="#14213D" stop-opacity=".9"/><stop offset=".55" stop-color="#14213D" stop-opacity=".55"/><stop offset="1" stop-color="#14213D" stop-opacity="0"/></linearGradient>
-      </defs>
       <line class="ground" x1="0" y1="232" x2="1200" y2="232"/>
-      <path class="field f1" d="M86,232 A90,90 0 0 1 266,232"/>
-      <path class="field f2" d="M21,232 A155,155 0 0 1 331,232"/>
-      <path class="field f3" d="M-44,232 A220,220 0 0 1 396,232"/>
-      <line class="link c2" x1="930" y1="186" x2="640" y2="106" stroke="url(#g1)"/>
-      <line class="link c2" x1="930" y1="186" x2="830" y2="148" stroke="url(#g2)"/>
-      <line class="link c2" x1="930" y1="186" x2="1010" y2="84" stroke="url(#g3)"/>
-      <line class="link sat" x1="430" y1="34" x2="640" y2="90" stroke="url(#g4)"/>
-      <line class="link sat" x1="430" y1="34" x2="830" y2="132" stroke="url(#g5)"/>
-      <line class="link sat" x1="430" y1="34" x2="560" y2="202" stroke="url(#g6)"/>
-      <line class="link sat" x1="430" y1="34" x2="640" y2="202" stroke="url(#g7)"/>
-      <line class="link sat" x1="1110" y1="28" x2="830" y2="132" stroke="url(#g8)"/>
-      <line class="link sat" x1="1110" y1="28" x2="1010" y2="68" stroke="url(#g9)"/>
-      <path class="link" d="M564,200 Q600.0,170 636,200" stroke="url(#g10)"/>
+      <path class="field" d="M-90,232 A260,95 0 0 1 430,232"/>
+      <path class="field" d="M-390,232 A560,165 0 0 1 730,232"/>
+      <path class="field" d="M-730,232 A900,222 0 0 1 1070,232"/>
+      <line class="head c2" x1="930" y1="186" x2="785" y2="146"/>
+      <line class="tail c2" x1="762" y1="140" x2="640" y2="106"/>
+      <line class="cut" x1="774" y1="150" x2="778" y2="137"/>
+      <line class="cut" x1="767" y1="148" x2="771" y2="135"/>
+      <line class="head c2" x1="930" y1="186" x2="880" y2="167"/>
+      <line class="tail c2" x1="872" y1="164" x2="830" y2="148"/>
+      <line class="cut" x1="875" y1="172" x2="879" y2="159"/>
+      <line class="cut" x1="872" y1="171" x2="877" y2="158"/>
+      <line class="head c2" x1="930" y1="186" x2="970" y2="135"/>
+      <line class="tail c2" x1="976" y1="127" x2="1010" y2="84"/>
+      <line class="cut" x1="967" y1="128" x2="978" y2="136"/>
+      <line class="cut" x1="969" y1="125" x2="980" y2="134"/>
+      <line class="head sat" x1="430" y1="34" x2="535" y2="62"/>
+      <line class="tail sat" x1="552" y1="66" x2="640" y2="90"/>
+      <line class="cut" x1="543" y1="57" x2="539" y2="70"/>
+      <line class="cut" x1="548" y1="58" x2="545" y2="72"/>
+      <line class="head sat" x1="430" y1="34" x2="630" y2="83"/>
+      <line class="tail sat" x1="662" y1="91" x2="830" y2="132"/>
+      <line class="cut" x1="644" y1="79" x2="640" y2="93"/>
+      <line class="cut" x1="654" y1="82" x2="650" y2="95"/>
+      <line class="head sat" x1="430" y1="34" x2="498" y2="111"/>
+      <line class="tail sat" x1="508" y1="123" x2="565" y2="188"/>
+      <line class="cut" x1="507" y1="111" x2="496" y2="120"/>
+      <line class="cut" x1="510" y1="115" x2="500" y2="124"/>
+      <line class="head sat" x1="430" y1="34" x2="538" y2="111"/>
+      <line class="tail sat" x1="555" y1="123" x2="645" y2="188"/>
+      <line class="cut" x1="548" y1="110" x2="540" y2="121"/>
+      <line class="cut" x1="553" y1="114" x2="545" y2="125"/>
+      <line class="head sat" x1="1110" y1="28" x2="1060" y2="48"/>
+      <line class="tail sat" x1="1052" y1="51" x2="1010" y2="68"/>
+      <line class="cut" x1="1060" y1="56" x2="1054" y2="43"/>
+      <line class="cut" x1="1057" y1="57" x2="1052" y2="44"/>
+      <line class="head sat" x1="1110" y1="28" x2="970" y2="80"/>
+      <line class="tail sat" x1="948" y1="88" x2="830" y2="132"/>
+      <line class="cut" x1="964" y1="90" x2="959" y2="77"/>
+      <line class="cut" x1="957" y1="92" x2="952" y2="79"/>
+      <path class="head c2" d="M565,188 Q602.0,158 645,188"/>
+      <line class="cut" x1="600.0" y1="165" x2="600.0" y2="181"/><line class="cut" x1="607.0" y1="165" x2="607.0" y2="181"/>
       <g transform="translate(430 26) rotate(-6) scale(1.0)">
         <rect class="ln-fill" x="-8" y="-6" width="16" height="12" rx="1.5"/>
         <path class="ln" d="M-8,0 H-14 M8,0 H14 M-4,6 Q0,13 4,6"/>
@@ -142,44 +163,43 @@ footer a{color:#C9D2D7}
       </g>
       <g transform="translate(560 232)">
         <rect class="ln-fill" x="-7" y="-26" width="14" height="22" rx="2"/>
-        <path class="ln" d="M3,-26 L5,-44 M-4,-18 H4 M-4,-13 H4"/>
-        <path class="ln" d="M-12,0 H12"/>
+        <path class="ln" d="M3,-26 L5,-44 M-4,-18 H4 M-4,-13 H4 M-12,0 H12"/>
       </g>
       <g transform="translate(640 232)">
         <rect class="ln-fill" x="-7" y="-26" width="14" height="22" rx="2"/>
-        <path class="ln" d="M3,-26 L5,-44 M-4,-18 H4 M-4,-13 H4"/>
-        <path class="ln" d="M-12,0 H12"/>
+        <path class="ln" d="M3,-26 L5,-44 M-4,-18 H4 M-4,-13 H4 M-12,0 H12"/>
       </g>
       <g transform="translate(930 232)">
         <rect class="ln-fill" x="-18" y="-16" width="36" height="16" rx="2"/>
-        <path class="ln" d="M0,-16 V-40 M-10,-46 Q0,-36 10,-46 M0,-41 V-46"/>
-        <path class="ln" d="M-12,-9 H-2 M4,-9 H12"/>
+        <path class="ln" d="M0,-16 V-40 M-10,-46 Q0,-36 10,-46 M0,-41 V-46 M-12,-9 H-2 M4,-9 H12"/>
       </g>
-      <!-- jammer -->
-      <g transform="translate(176 232)">
+      <!-- our jammer -->
+      <g class="us" transform="translate(170 232) scale(1.7)">
         <rect class="ln-fill" x="-22" y="-26" width="44" height="26" rx="3"/>
-        <path class="ln" d="M-12,-26 L-18,-56 M0,-26 V-60 M12,-26 L18,-56 M-14,-17 H2 M-14,-11 H2"/>
-        <circle cx="12" cy="-15" r="3" fill="var(--marker)"/>
+        <path class="ln" d="M-12,-26 L-18,-56 M0,-26 V-60 M12,-26 L18,-56"/>
+        <path class="slot" d="M-14,-17 H2 M-14,-10 H2"/>
+        <circle cx="12" cy="-14" r="3.2" fill="var(--marker)"/>
       </g>
       <!-- callouts -->
-      <path class="lead" d="M200,192 L236,158 H286"/>
-      <text class="lbl" x="290" y="162">Jammer</text>
-      <path class="lead" d="M652,84 L680,58 H716"/>
-      <text class="lbl" x="720" y="62">UAS</text>
+      <path class="lead us-lead" d="M210,152 L242,120 H290"/>
+      <text class="lbl us-l" x="296" y="125">Grey Cat</text>
       <path class="lead" d="M462,30 L500,14 H540"/>
       <text class="lbl" x="544" y="18">GNSS / SATCOM</text>
+      <path class="lead" d="M652,84 L680,58 H716"/>
+      <text class="lbl" x="720" y="62">UAS</text>
+      <path class="lead" d="M600,170 L612,142 H646"/>
+      <text class="lbl" x="650" y="146">Comms</text>
       <path class="lead" d="M884,170 L852,196 H806"/>
       <text class="lbl" x="802" y="200" text-anchor="end">C2 link</text>
-      <path class="lead" d="M600,174 L600,148 H640"/>
-      <text class="lbl" x="644" y="152">Comms</text>
-      <!-- other mission areas -->
       <g class="tag">
-        <rect x="1004" y="202" width="196" height="26" rx="3"/>
-        <g class="lk" transform="translate(1014 207)"><rect x="0" y="6" width="11" height="9" rx="1.5"/><path d="M2.5,6 V4 a3,3 0 0 1 6,0 V6"/></g>
-        <text x="1032" y="220">Other mission areas</text>
+        <rect x="290" y="134" width="196" height="26" rx="3"/>
+        <g class="lk" transform="translate(300 139)"><rect x="0" y="6" width="11" height="9" rx="1.5"/><path d="M2.5,6 V4 a3,3 0 0 1 6,0 V6"/></g>
+        <text x="318" y="152">Other mission areas</text>
       </g>
     </svg>
   </figure>
+  <figure class="wf" aria-hidden="true"><canvas id="wf" width="600" height="90"></canvas></figure>
+  <p class="wf-cap"><span class="tag-m"><svg width="11" height="13" viewBox="0 0 11 13" aria-hidden="true"><rect x="0" y="5" width="11" height="8" rx="1.5" fill="#fff"/><path d="M2.5,5 V3.5 a3,3 0 0 1 6,0 V5" fill="none" stroke="#fff" stroke-width="1.6"/></svg>Other mission areas</span><span aria-hidden="true">Waterfall, time ↓</span></p>
   <figure class="scope" aria-hidden="true">
     <svg viewBox="0 0 1200 240" preserveAspectRatio="none">
       <g class="gridline">
@@ -194,8 +214,6 @@ footer a{color:#C9D2D7}
       </g>
     </svg>
   </figure>
-  <figure class="wf" aria-hidden="true"><canvas id="wf" width="600" height="90"></canvas></figure>
-  <p class="wf-cap"><span class="tag-m"><svg width="11" height="13" viewBox="0 0 11 13" aria-hidden="true"><rect x="0" y="5" width="11" height="8" rx="1.5" fill="#fff"/><path d="M2.5,5 V3.5 a3,3 0 0 1 6,0 V5" fill="none" stroke="#fff" stroke-width="1.6"/></svg>Other mission areas</span><span aria-hidden="true">Waterfall, time ↓</span></p>
 </header>
 
 <main>
@@ -232,16 +250,19 @@ footer a{color:#C9D2D7}
 
 <footer><div class="wrap">© 2024–2026 Grey Cat Solutions LLC · CAGE 04A24 · <a href="mailto:contact@greycatengsolutions.com">contact@greycatengsolutions.com</a></div></footer>
 <script>
-(()=>{const c=document.getElementById('wf');if(!c)return;const x=c.getContext('2d'),W=c.width,H=c.height;
+(()=>{const c=document.getElementById('wf');if(!c)return;const x=c.getContext('2d'),W=c.width,H=c.height,sc=document.querySelector('.scene');
 const em=[[.18,.012,.35,1],[.44,.006,.55,1],[.62,.004,.95,.6],[.81,.009,.45,.8]];
-const stops=[[14,22,38],[20,90,104],[63,167,181],[232,184,74]];
-function cm(v){v=Math.max(0,Math.min(1,v))*3;const i=Math.min(2,Math.floor(v)),f=v-i,a=stops[i],b=stops[i+1];return[a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,a[2]+(b[2]-a[2])*f]}
-let t=0;function row(){const img=x.createImageData(W,1);t++;for(let i=0;i<W;i++){const u=i/W;let v=.08+Math.random()*.1;
-for(const[c0,w,a,duty]of em){const on=duty>=1||((Math.sin(t*.09+c0*40)+1)/2)<duty;if(on)v+=a*Math.exp(-(((u-c0)/(w*1.4))**2)/2)*(.85+Math.random()*.3)}
+const st=[[14,22,38],[20,90,104],[63,167,181],[232,184,74]];
+function cm(v){v=Math.max(0,Math.min(1,v))*3;const i=Math.min(2,Math.floor(v)),f=v-i,a=st[i],b=st[i+1];return[a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,a[2]+(b[2]-a[2])*f]}
+const CYC=150,OFF=60;let t=0;
+function row(jam){const img=x.createImageData(W,1);for(let i=0;i<W;i++){const u=i/W;let v=.08+Math.random()*.1;
+if(jam){v+=.14+Math.random()*.1;for(const[c0]of em.slice(1))v+=.18*Math.exp(-(((u-c0)/.035)**2)/2)}
+else{for(const[c0,w,a,d]of em){const on=d>=1||((Math.sin(t*.09+c0*40)+1)/2)<d;if(on)v+=a*Math.exp(-(((u-c0)/(w*1.4))**2)/2)*(.85+Math.random()*.3)}}
 const k=cm(v);img.data.set([k[0],k[1],k[2],255],i*4)}return img}
-function step(){x.drawImage(c,0,0,W,H-1,0,1,W,H-1);x.putImageData(row(),0,0)}
+function step(){t++;const jam=(t%CYC)>=OFF;sc&&sc.classList.toggle('off',!jam);x.drawImage(c,0,0,W,H-1,0,1,W,H-1);x.putImageData(row(jam),0,0)}
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
 for(let y=0;y<H;y++)step();
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(step,90);})();
+if(still){sc&&sc.classList.remove('off')}else setInterval(step,90);})();
 </script>
 </body>
 </html>
