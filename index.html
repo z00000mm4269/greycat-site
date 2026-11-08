@@ -48,37 +48,47 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 .founder a{color:var(--signal)}
 .scene{margin:36px 0 0}
 .scene svg{display:block;width:100%;height:auto;overflow:hidden}
+.scene .frame{fill:none;stroke:var(--ink);stroke-width:1;opacity:.55}
+.scene .titlebar{fill:var(--ink);opacity:.08}
+.scene .ttl{font:600 12px "IBM Plex Sans",system-ui,sans-serif;fill:var(--ink)}
+.scene .ttl.r{font-weight:500;fill:var(--muted)}
+.scene .terrain{fill:var(--ink);opacity:.06}
+.scene .band{fill:var(--ink);opacity:.07}
 .scene .ln{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .scene .ln-fill{fill:var(--paper);stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round}
 .scene .hatch{stroke:var(--ink);stroke-width:.75;opacity:.6}
-.scene .ground{stroke:var(--ink);stroke-width:1;opacity:.45}
+.scene .ground{stroke:var(--ink);stroke-width:1;opacity:.6}
 .scene .us .ln,.scene .us .ln-fill{stroke-width:2.6}
 .scene .us .ln-fill{fill:var(--ink)}
 .scene .us .slot{stroke:var(--paper);stroke-width:2;stroke-linecap:round}
-.scene .field{fill:none;stroke:var(--marker);stroke-width:3;stroke-dasharray:10 7;stroke-linecap:round;opacity:1;transition:opacity .6s}
+.scene .dome{transition:opacity .6s}
+.scene .dome.fill{fill:#F58232;fill-opacity:.09;stroke:none}
+.scene .dome.edge{fill:none;stroke:#C9620F;stroke-width:1.6;stroke-dasharray:7 6}
 .scene .head{stroke-width:1.4;fill:none}
 .scene .head.c2{stroke:var(--ink)}.scene .head.sat{stroke:var(--signal);stroke-dasharray:1.5 4}
 .scene .tail{stroke-width:1.2;fill:none;opacity:.12;transition:opacity .6s}
 .scene .tail.c2{stroke:var(--ink)}.scene .tail.sat{stroke:var(--signal);stroke-dasharray:1.5 4}
-.scene .cut{stroke:var(--marker);stroke-width:2.2;stroke-linecap:round;opacity:1;transition:opacity .6s}
-.scene .lbl{font:500 12px "IBM Plex Sans",system-ui,sans-serif;fill:var(--muted)}
-.scene .lbl.us-l{font:700 15px "IBM Plex Sans",system-ui,sans-serif;fill:var(--ink)}
-.scene .lead{stroke:var(--muted);stroke-width:.75;fill:none}
+.scene .gap{stroke-width:1.4;fill:none;opacity:0;transition:opacity .6s}
+.scene .gap.c2{stroke:var(--ink)}.scene .gap.sat{stroke:var(--signal);stroke-dasharray:1.5 4}
+.scene .cut{stroke:#C9620F;stroke-width:2.4;stroke-linecap:round;opacity:1;transition:opacity .6s}
+.scene .nl rect{fill:var(--paper);stroke:var(--ink);stroke-width:.8}
+.scene .nl text{font:600 11px "IBM Plex Sans",system-ui,sans-serif;fill:var(--ink)}
+.scene .step circle{fill:var(--ink)}
+.scene .step text{font:700 11px "IBM Plex Sans",system-ui,sans-serif;fill:#fff}
+.scene .lg{font:500 12px "IBM Plex Sans",system-ui,sans-serif;fill:var(--ink)}
 .scene .tag rect{fill:var(--ink)}
 .scene .tag text{font:600 14px "IBM Plex Sans",system-ui,sans-serif;fill:#fff}
 .scene .tag .lk rect{fill:#fff}.scene .tag .lk path{fill:none;stroke:#fff;stroke-width:1.6}
-.scene .gap{stroke-width:1.4;fill:none;opacity:0;transition:opacity .6s}
-.scene .gap.c2{stroke:var(--ink)}.scene .gap.sat{stroke:var(--signal);stroke-dasharray:1.5 4}
 .scene.off .gap{opacity:.85}
-.scene.off .field{opacity:.12}.scene.off .tail{opacity:.85}.scene.off .cut{opacity:0}
+.scene.off .dome{opacity:.2}.scene.off .tail{opacity:.85}.scene.off .cut{opacity:0}
 .wf{margin:4px 0 0;background:#0E1626;border-radius:2px;overflow:hidden}
 .wf canvas{display:block;width:100%;height:auto}
 .wf-cap{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.75rem;color:var(--muted);margin:6px 0 0}
 .wf-cap > span:last-child{margin-left:auto}
 .scope{margin-top:6px !important}
-@media (max-width:640px){.scope .mktext{display:none}.scene .lbl:not(.us-l){display:none}
-.scene .lbl.us-l{font-size:30px}
-.scene .lead:not(.us-lead){display:none}
+@media (max-width:640px){.scope .mktext{display:none}
+.scene .nl,.scene .legend,.scene .step,.scene .ttl.r{display:none}
+.scene .ttl{font-size:17px}
 .scene .tag{transform:translate(266px,209px) scale(1.35) translate(-266px,-209px)}}
 footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:28px 0;margin-top:88px}
 footer a{color:#C9D2D7}
@@ -89,11 +99,14 @@ footer a{color:#C9D2D7}
   <h1>Grey Cat Solutions</h1>
   <p class="tag">Electronic warfare systems engineering, from requirements to fielded product.</p>
   <figure class="scene" aria-hidden="true">
-    <svg viewBox="0 -64 1200 314" preserveAspectRatio="xMidYMid meet">
+    <svg viewBox="0 -80 1200 382" preserveAspectRatio="xMidYMid meet">
+      <rect class="titlebar" x="0" y="-80" width="1200" height="24"/>
+      <text class="ttl" x="12" y="-64">OV-1  ·  High-level operational concept</text>
+      <text class="ttl r" x="1188" y="-64" text-anchor="end">Illustrative</text>
+      <path class="terrain" d="M0,232 L0,214 C120,198 220,220 360,210 S620,192 760,212 S1020,196 1200,216 L1200,232 Z"/>
+      <path class="dome fill" d="M-580,232 A900,222 0 0 1 1220,232 Z"/><path class="dome edge" d="M-580,232 A900,222 0 0 1 1220,232"/>
+      <rect class="band" x="0" y="232" width="1200" height="70"/>
       <line class="ground" x1="0" y1="232" x2="1200" y2="232"/>
-      <path class="field" d="M60,232 A260,95 0 0 1 580,232"/>
-      <path class="field" d="M-240,232 A560,165 0 0 1 880,232"/>
-      <path class="field" d="M-580,232 A900,222 0 0 1 1220,232"/>
       <line class="head c2" x1="930" y1="186" x2="785" y2="146"/>
       <line class="gap c2" x1="785" y1="146" x2="762" y2="140"/>
       <line class="tail c2" x1="762" y1="140" x2="640" y2="106"/>
@@ -180,25 +193,37 @@ footer a{color:#C9D2D7}
         <rect class="ln-fill" x="-18" y="-16" width="36" height="16" rx="2"/>
         <path class="ln" d="M0,-16 V-40 M-10,-46 Q0,-36 10,-46 M0,-41 V-46 M-12,-9 H-2 M4,-9 H12"/>
       </g>
-      <!-- our jammer -->
       <g class="us" transform="translate(320 232) scale(1.7)">
         <rect class="ln-fill" x="-22" y="-26" width="44" height="26" rx="3"/>
         <path class="ln" d="M-12,-26 L-18,-56 M0,-26 V-60 M12,-26 L18,-56"/>
         <path class="slot" d="M-14,-17 H2 M-14,-10 H2"/>
         <circle cx="12" cy="-14" r="3.2" fill="var(--marker)"/>
       </g>
-      <!-- callouts -->
-      <path class="lead" d="M652,84 L680,58 H716"/>
-      <text class="lbl" x="720" y="62">UAS</text>
-      <path class="lead" d="M600,170 L612,142 H646"/>
-      <text class="lbl" x="650" y="146">Comms</text>
-      <path class="lead" d="M884,170 L852,196 H806"/>
-      <text class="lbl" x="802" y="200" text-anchor="end">C2 link</text>
+      <g class="nl"><rect x="285" y="105" width="71" height="19" rx="2"/><text x="320" y="118" text-anchor="middle">EA system</text></g>
+      <g class="nl"><rect x="602" y="49" width="77" height="19" rx="2"/><text x="640" y="62" text-anchor="middle">Threat UAS</text></g>
+      <g class="nl"><rect x="555" y="123" width="90" height="19" rx="2"/><text x="600" y="136" text-anchor="middle">Threat comms</text></g>
+      <g class="nl"><rect x="958" y="193" width="121" height="19" rx="2"/><text x="1019" y="206" text-anchor="middle">Threat C2 station</text></g>
+      <g class="step"><circle cx="372" cy="120" r="9"/><text x="372" y="124" text-anchor="middle">1</text></g>
+      <g class="step"><circle cx="700" cy="62" r="9"/><text x="700" y="66" text-anchor="middle">2</text></g>
+      <g class="step"><circle cx="808" cy="108" r="9"/><text x="808" y="112" text-anchor="middle">3</text></g>
       <g class="tag">
         <rect x="70" y="196" width="196" height="26" rx="3"/>
         <g class="lk" transform="translate(80 201)"><rect x="0" y="6" width="11" height="9" rx="1.5"/><path d="M2.5,6 V4 a3,3 0 0 1 6,0 V6"/></g>
         <text x="98" y="214">Other mission areas</text>
       </g>
+      <g class="legend">
+      <g class="step"><circle cx="28" cy="270" r="9"/><text x="28" y="274" text-anchor="middle">1</text></g>
+        <text class="lg" x="44" y="274">Detect</text>
+      <g class="step"><circle cx="118" cy="270" r="9"/><text x="118" y="274" text-anchor="middle">2</text></g>
+        <text class="lg" x="134" y="274">Characterize</text>
+      <g class="step"><circle cx="238" cy="270" r="9"/><text x="238" y="274" text-anchor="middle">3</text></g>
+        <text class="lg" x="254" y="274">Attack the link</text>
+        <line class="head c2" x1="560" y1="270" x2="596" y2="270"/><text class="lg" x="604" y="274">C2 / comms link</text>
+        <line class="head sat" x1="726" y1="270" x2="762" y2="270"/><text class="lg" x="770" y="274">Satellite link</text>
+        <rect x="874" y="263" width="30" height="14" rx="2" fill="#F58232" fill-opacity=".2" stroke="#C9620F" stroke-dasharray="4 3"/><text class="lg" x="912" y="274">EA coverage</text>
+        <line class="cut" x1="1022" y1="263" x2="1016" y2="277"/><line class="cut" x1="1030" y1="263" x2="1024" y2="277"/><text class="lg" x="1040" y="274">Link denied</text>
+      </g>
+      <rect class="frame" x=".5" y="-79.5" width="1199" height="381"/>
     </svg>
   </figure>
   <figure class="wf" aria-hidden="true"><canvas id="wf" width="600" height="90"></canvas></figure>
