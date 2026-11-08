@@ -262,9 +262,9 @@ function draw(){if(!tr)return;let pts=[];for(let i=0;i<W;i+=2){const y=Math.min(
 function row(){const img=x.createImageData(W,1);for(let i=0;i<W;i++){const u=i/W;let v=.08+Math.random()*.1+.03*lvl,j=0;
 for(const[c0,w,a,d]of em){const on=d>=1||((Math.sin(t*.09+c0*40)+1)/2)<d;if(on)v+=a*Math.exp(-(((u-c0)/(w*1.4))**2)/2)*(.85+Math.random()*.3);
 j+=lvl*(.6+Math.random()*.3)*Math.exp(-(((u-c0)/.026)**2)/2)}
-avg[i]=avg[i]*.75+v*.25;javg[i]=javg[i]*.75+j*.25;
+avg[i]=avg[i]*.75+v*.25;javg[i]=javg[i]*.45+j*.55;
 const k=cm(v),f=Math.min(1,j*1.5);img.data.set([k[0]+(245-k[0])*f,k[1]+(130-k[1])*f,k[2]+(50-k[2])*f,255],i*4)}return img}
-function step(){t++;const jam=(t%CYC)>=OFF;lvl+=((jam?1:0)-lvl)*.08;sc&&sc.classList.toggle('off',!jam);x.drawImage(c,0,0,W,H-1,0,1,W,H-1);x.putImageData(row(),0,0);if(t%2===0)draw()}
+function step(){t++;const jam=(t%CYC)>=OFF;lvl+=((jam?1:0)-lvl)*(jam?.3:.12);sc&&sc.classList.toggle('off',!jam);x.drawImage(c,0,0,W,H-1,0,1,W,H-1);x.putImageData(row(),0,0);if(t%2===0)draw()}
 const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
 for(let y=0;y<H;y++)step();
 if(still){sc&&sc.classList.remove('off')}else setInterval(step,90);})();
