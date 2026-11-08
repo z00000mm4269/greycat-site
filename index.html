@@ -64,9 +64,6 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 .scene .ant .screen{fill:var(--signal)}
 .scene .ant .led{fill:var(--marker)}
 .scene .ant .vent{fill:#2E4057}
-.scene .dev-small rect{fill:var(--ink)}
-.scene .dev-small line{stroke:var(--ink);stroke-width:1.5;stroke-linecap:round}
-.scene .callout line{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 4;opacity:.7}
 .scene .q-arm{stroke:var(--ink);stroke-width:3;stroke-linecap:round}
 .scene .q-body{fill:var(--ink)}
 .scene .q-rotor{fill:var(--muted);opacity:.55}
@@ -142,26 +139,7 @@ footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:0 0 32px}
       </g>      <use href="#sat" transform="translate(470 -52) rotate(-8)"/>
       <use href="#sat" transform="translate(1110 -58) rotate(10) scale(0.8)"/>
 
-      <!-- RCIED on the ground behind the transmitter -->
-      <g class="ied" transform="translate(18 0)">
-        <path d="M26,222 Q60,206 120,222 Z" fill="#C9D2D7"/>
-        <path d="M30,203 L82,203 Q104,204 116,212 Q104,220 82,221 L30,221 Q26,221 26,217 L26,207 Q26,203 30,203 Z" fill="#4F5D66"/>
-        <rect x="70" y="203" width="5" height="18" fill="#D99A00"/>
-        <rect x="24" y="205" width="4" height="14" rx="1" fill="#14213D"/>
-        <path d="M26,212 C16,212 14,204 10,198" fill="none" stroke="#C0392B" stroke-width="1.6"/>
-        <rect x="2" y="186" width="16" height="12" rx="2" fill="#14213D"/>
-        <circle cx="7" cy="192" r="1.8" fill="#C0392B"/>
-        <line x1="14" y1="186" x2="22" y2="150" stroke="#14213D" stroke-width="2" stroke-linecap="round"/>
-      </g>
       <!-- jammer: small fielded unit on the ground, shown enlarged in a callout -->
-      <g class="callout">
-        <line x1="300" y1="212" x2="218" y2="124"/>
-        <line x1="318" y1="212" x2="262" y2="124"/>
-      </g>
-      <g class="dev-small">
-        <rect x="300" y="210" width="18" height="12" rx="2"/>
-        <line x1="304" y1="210" x2="301" y2="200"/><line x1="309" y1="210" x2="309" y2="198"/><line x1="314" y1="210" x2="317" y2="200"/>
-      </g>
       <g class="ant">
         <rect x="214" y="84" width="52" height="40" rx="5"/>
         <rect x="222" y="94" width="20" height="8" rx="1.5" class="screen"/>
@@ -187,15 +165,14 @@ footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:0 0 32px}
       </g>
       <!-- other applications -->
       <g class="other">
-        <rect x="142" y="184" width="112" height="30" rx="5"/>
-        <text x="198" y="204" text-anchor="middle">Other applications</text>
+        <rect x="20" y="186" width="140" height="32" rx="5"/>
+        <text x="90" y="207" text-anchor="middle">Other applications</text>
       </g>
       <!-- links defeated -->
       <g class="defeat">
         <g transform="translate(740 50)"><line x1="-5" y1="-5" x2="5" y2="5"/><line x1="5" y1="-5" x2="-5" y2="5"/></g>
         <g transform="translate(988 78)"><line x1="-5" y1="-5" x2="5" y2="5"/><line x1="5" y1="-5" x2="-5" y2="5"/></g>
         <g transform="translate(1060 30)"><line x1="-5" y1="-5" x2="5" y2="5"/><line x1="5" y1="-5" x2="-5" y2="5"/></g>
-        <g transform="translate(40 150)"><line x1="-5" y1="-5" x2="5" y2="5"/><line x1="5" y1="-5" x2="-5" y2="5"/></g>
       </g>
       <!-- adversary personnel with radios -->
       <g class="enemy-links">
