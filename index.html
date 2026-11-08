@@ -56,8 +56,8 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 .scene .downlink line.cut{stroke:#C0392B;opacity:.35}
 .scene .downlink .spark{fill:var(--marker)}
 .scene .enemy-links path{fill:none;stroke:#C0392B;stroke-width:1.4;stroke-dasharray:3 4;opacity:.8}
-.scene .other rect{fill:var(--signal);fill-opacity:.12;stroke:var(--signal);stroke-width:2}
-.scene .other text{font:700 18px "Archivo",sans-serif;font-stretch:115%;fill:var(--ink)}
+.scene .other rect{fill:var(--signal);stroke:none}
+.scene .other text{font:800 20px "Archivo",sans-serif;font-stretch:115%;fill:#fff}
 .scene .ground{stroke:var(--grid);stroke-width:1.5}
 .scene .ant line{stroke:var(--ink);stroke-width:3;stroke-linecap:round}
 .scene .ant rect{fill:var(--ink)}
@@ -79,7 +79,9 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
   @keyframes flow{to{stroke-dashoffset:-28}}
   @keyframes pulse{0%{opacity:.15}25%{opacity:1}100%{opacity:.15}}
 }
-@media (max-width:640px){.scope .mktext{display:none}}
+@media (max-width:640px){.scope .mktext{display:none}
+.scene .other rect{y:150px;width:332px;height:76px;rx:14px}
+.scene .other text{font-size:32px}}
 footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:0 0 32px}
 </style>
 </head>
@@ -162,7 +164,7 @@ footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:0 0 32px}
       <g class="waves">
         <circle class="w w1" cx="240" cy="96" r="34"/>
         <circle class="w w2" cx="240" cy="96" r="60"/>
-        <circle class="w w3" cx="240" cy="96" r="86"/>
+        <circle class="w w3" cx="240" cy="96" r="80"/>
       </g>
       <!-- jamming toward the UAS -->
       <g class="jam">
@@ -174,8 +176,8 @@ footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:0 0 32px}
       </g>
       <!-- other applications -->
       <g class="other">
-        <rect x="16" y="166" width="196" height="48" rx="8"/>
-        <text x="114" y="196" text-anchor="middle">Other applications</text>
+        <rect x="0" y="170" width="212" height="50" rx="10"/>
+        <text x="16" y="202">Other applications</text>
       </g>
       <!-- links defeated -->
       <g class="defeat">
