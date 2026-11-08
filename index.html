@@ -265,7 +265,7 @@ let lvl=0;const avg=new Float32Array(W).fill(.13),javg=new Float32Array(W),jt=do
 function draw(){if(!tr)return;let pts=[];for(let i=0;i<W;i+=2){const y=Math.min(218,Math.max(30,198-(avg[i]-.13)*140));pts.push((i/W*1200).toFixed(1)+','+y.toFixed(1))}const P=pts.join(' ');tr.setAttribute('points',P);fa&&fa.setAttribute('points','0,220 '+P+' 1200,220');let q=[];for(let i=0;i<W;i+=2){q.push((i/W*1200).toFixed(1)+','+Math.min(220,Math.max(30,198-javg[i]*140)).toFixed(1))}const Q=q.join(' ');jt&&jt.setAttribute('points',Q);jf&&jf.setAttribute('points','0,198 '+Q+' 1200,198')}
 function row(){const img=x.createImageData(W,1);for(let i=0;i<W;i++){const u=i/W;let v=.08+Math.random()*.1+.03*lvl,j=0;
 for(const[c0,w,a,d]of em){const on=d>=1||((Math.sin(t*.09+c0*40)+1)/2)<d;if(on)v+=a*Math.exp(-(((u-c0)/(w*1.4))**2)/2)*(.85+Math.random()*.3);
-j+=lvl*a*1.25*(.9+Math.random()*.2)*Math.exp(-(((u-c0)/(w*1.4*1.35))**2)/2)}
+j+=lvl*a*1.25*(.9+Math.random()*.2)*Math.exp(-(((u-c0)/(w*1.4*1.6))**2)/2)}
 avg[i]=avg[i]*.75+v*.25;javg[i]=javg[i]*.45+j*.55;
 const k=cm(v),f=Math.min(1,j*2.2);img.data.set([k[0]+(245-k[0])*f,k[1]+(130-k[1])*f,k[2]+(50-k[2])*f,255],i*4)}return img}
 function step(){t++;const jam=(t%CYC)>=OFF;lvl+=((jam?1:0)-lvl)*(jam?.3:.12);sc&&sc.classList.toggle('off',!jam);x.drawImage(c,0,0,W,H-1,0,1,W,H-1);x.putImageData(row(),0,0);if(t%2===0)draw()}
