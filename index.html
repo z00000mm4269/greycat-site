@@ -6,7 +6,7 @@
 <title>Grey Cat Solutions</title>
 <meta name="description" content="Grey Cat Solutions LLC: electronic warfare, counter-UxS and electromagnetic countermeasure systems engineering.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=IBM+Plex+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&amp;family=IBM+Plex+Sans:wght@400;500;700&amp;display=swap">
 <style>
 :root{
   --paper:#B3B6B9; --ink:#111B30; --signal:#145A68; --marker:#C98A00; --grid:#989DA2; --muted:#2F373E;
@@ -14,7 +14,7 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.6 "IBM Plex Sans",system-ui,sans-serif}
-a{color:var(--signal);text-underline-offset:3px}
+a{color:#0D4450;text-underline-offset:3px}
 a:focus-visible{outline:2px solid var(--marker);outline-offset:3px}
 .wrap{max-width:1120px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}
 header.hero{padding-top:72px}
@@ -29,7 +29,6 @@ h1{font:800 clamp(2.4rem,7.4vw,5.6rem)/0.95 "Archivo",sans-serif;font-stretch:12
 .scope .jtrace{fill:none;stroke:#E2701F;stroke-width:2;stroke-linejoin:round}
 .scope .mk{fill:var(--marker)}
 .scope .mktext{font:500 15px "IBM Plex Sans",sans-serif;fill:var(--ink)}
-.scope .axis{font:400 12px "IBM Plex Sans",sans-serif;fill:var(--muted)}
 @media (prefers-reduced-motion:no-preference){
   .scope .marker-g{opacity:0;animation:show .4s ease-out 2.3s forwards}
   @keyframes sweep{to{stroke-dashoffset:0}}
@@ -44,11 +43,6 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px 48px;margin:0}
 .facts dt{font-weight:500;margin:0 0 6px}
 .facts dd{margin:0;color:var(--muted);max-width:40ch}
-.contact{background:var(--ink);color:var(--paper);margin-top:88px;padding:56px 0 40px}
-.contact h2{color:var(--paper)}
-.contact p{margin:0 0 8px}
-.contact a{color:#fff;font-size:clamp(1.15rem,2.6vw,1.6rem);font-weight:500;word-break:break-word}
-.contact .li a{font-size:1rem;color:#C9D2D7}
 .founder{margin:20px 0 0;max-width:62ch;color:var(--muted)}
 .founder a{color:var(--signal)}
 .scene{margin:36px 0 0}
@@ -83,7 +77,6 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 .wf-cap .legend{display:inline-flex;align-items:center;gap:6px}
 .wf-cap .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-left:8px}
 .wf-cap .legend i:first-child{margin-left:0}
-.wf-cap .tag-m{display:none;align-items:center;gap:6px;background:var(--ink);color:#fff;font-weight:600;font-size:.8125rem;padding:4px 10px;border-radius:3px}
 .scope{margin-top:6px !important}
 @media (max-width:640px){.scope .mktext{display:none}.scene .lbl:not(.us-l){display:none}
 .scene .lbl.us-l{font-size:30px}
@@ -211,7 +204,7 @@ footer a{color:#C9D2D7}
     </svg>
   </figure>
   <figure class="wf" aria-hidden="true"><canvas id="wf" width="600" height="90"></canvas></figure>
-  <p class="wf-cap"><span class="tag-m"><svg width="11" height="13" viewBox="0 0 11 13" aria-hidden="true"><rect x="0" y="5" width="11" height="8" rx="1.5" fill="#fff"/><path d="M2.5,5 V3.5 a3,3 0 0 1 6,0 V5" fill="none" stroke="#fff" stroke-width="1.6"/></svg>Other mission areas</span><span class="legend" aria-hidden="true"><i style="background:#3FA7B5"></i>Signals<i style="background:#F58232"></i>Jamming</span><span aria-hidden="true">Waterfall, time ↓</span></p>
+  <p class="wf-cap"><span class="legend" aria-hidden="true"><i style="background:#3FA7B5"></i>Signals<i style="background:#F58232"></i>Jamming</span><span aria-hidden="true">Waterfall, time ↓</span></p>
   <figure class="scope" aria-hidden="true">
     <svg viewBox="0 0 1200 240" preserveAspectRatio="none">
       <g class="gridline">
