@@ -225,12 +225,12 @@ footer a{color:#C9D2D7}
 <section class="wrap" aria-labelledby="specialty">
   <h2 id="specialty">What we specialize in</h2>
   <p class="lead">Electronic attack, counter-UxS and counter-RCIED systems engineering from VHF through Ka-band, including breaking down requirements and tying them to the product the customer has in mind.</p>
-  <p class="founder">Founded by a career EW engineer with experience on RCIED-defeat, EOD and counter-UxS programs of record supporting SOCOM, USMC and other DoD customers.</p>
+  <p class="founder">Founded by a career EW engineer with experience on counter-RCIED, EOD and counter-UxS programs of record supporting SOCOM, USMC and other DoD customers.</p>
 </section>
 
 <section class="wrap" aria-labelledby="services">
   <h2 id="services">Cradle-to-grave EW systems engineering</h2>
-  <p class="lead">Everything from the first requirement to the finished system, and the ability to bring it all together.</p>
+  <p class="lead">From requirements through integration, test and fielding.</p>
   <ul class="caps">
     <li>Requirements analysis and decomposition</li>
     <li>System architecture design</li>
@@ -271,7 +271,7 @@ function draw(){if(!tr)return;let pts=[];for(let i=0;i<W;i+=2){const y=Math.min(
 function row(){const img=x.createImageData(W,1);for(let i=0;i<W;i++){const u=i/W;let v=.08+Math.random()*.1+.03*lvl,j=0;
 for(const e of em){const c0=e.hop?hopc(e):e.c,on=e.d>=1||((Math.sin(t*.09+e.c*40)+1)/2)<e.d;
 if(on)v+=e.a*Math.exp(-(((u-c0)/(e.w*1.4))**2)/2)*(.85+Math.random()*.3);
-j+=lvl*(e.a+e.js/DB)*(.95+Math.random()*.1)*Math.exp(-(((u-c0)/(e.w*1.4*1.6))**2)/2)}
+if(on)j+=lvl*(e.a+e.js/DB)*(.95+Math.random()*.1)*Math.exp(-(((u-c0)/(e.w*1.4*1.6))**2)/2)}
 avg[i]=avg[i]*.75+v*.25;javg[i]=javg[i]*.45+j*.55;
 const k=cm(v),f=Math.min(1,j*2.2);img.data.set([k[0]+(245-k[0])*f,k[1]+(130-k[1])*f,k[2]+(50-k[2])*f,255],i*4)}return img}
 function step(){t++;const jam=(t%CYC)>=OFF;lvl+=((jam?1:0)-lvl)*(jam?.3:.12);sc&&sc.classList.toggle('off',!jam);x.drawImage(c,0,0,W,H-1,0,1,W,H-1);x.putImageData(row(),0,0);if(t%2===0)draw()}
