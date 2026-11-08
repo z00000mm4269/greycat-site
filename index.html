@@ -56,6 +56,8 @@ h2{font:700 clamp(1.5rem,3vw,2rem)/1.15 "Archivo",sans-serif;font-stretch:125%;m
 .scene .downlink line.cut{stroke:#C0392B;opacity:.35}
 .scene .downlink .spark{fill:var(--marker)}
 .scene .enemy-links path{fill:none;stroke:#C0392B;stroke-width:1.4;stroke-dasharray:3 4;opacity:.8}
+.scene .other rect{fill:none;stroke:var(--signal);stroke-width:1.5;stroke-dasharray:5 4}
+.scene .other text{font:500 13px "IBM Plex Sans",sans-serif;fill:var(--ink)}
 .scene .ground{stroke:var(--grid);stroke-width:1.5}
 .scene .ant line{stroke:var(--ink);stroke-width:3;stroke-linecap:round}
 .scene .ant rect{fill:var(--ink)}
@@ -183,15 +185,10 @@ footer{background:var(--ink);color:#9AA8B0;font-size:.875rem;padding:0 0 32px}
         <polyline points="270.0,120.0 281.4,126.8 295.6,122.0 306.1,132.7 320.3,127.9 330.8,138.6 345.0,133.8 355.5,144.5 369.8,139.6 380.2,150.4 394.5,145.5 405.0,156.2 419.2,151.4 429.7,162.1 443.9,157.3 454.4,168.0 468.6,163.2 480.0,170.0"/>
         <polyline points="204.0,112.0 191.3,113.0 183.3,125.1 169.0,122.5 161.0,134.5 146.7,131.9 138.7,144.0 124.4,141.3 116.4,153.4 102.2,150.7 94.1,162.8 79.9,160.2 71.8,172.3 57.6,169.6 48.0,178.0"/>
       </g>
-      <!-- EOD technician in bomb suit at the RCIED -->
-      <g class="eod" transform="translate(166 222)">
-        <path d="M-2,-30 Q-6,-48 4,-54 L18,-54 Q26,-48 24,-30 Z" fill="#2E4057"/>
-        <circle cx="10" cy="-64" r="11" fill="#2E4057"/>
-        <path d="M-1,-68 Q-3,-62 0,-57 L8,-58 L8,-69 Z" fill="#7FB3C2"/>
-        <path d="M-2,-30 L-4,-14 L-22,-12 L-22,-4 L2,-4 L8,-28 Z" fill="#2E4057"/>
-        <path d="M12,-30 L20,-2 L30,-2 L26,-30 Z" fill="#2E4057"/>
-        <path d="M2,-48 L-20,-34 L-24,-30" fill="none" stroke="#2E4057" stroke-width="7" stroke-linecap="round"/>
-        <rect x="-30" y="-34" width="8" height="5" rx="1" fill="#D99A00"/>
+      <!-- other applications -->
+      <g class="other">
+        <rect x="142" y="184" width="112" height="30" rx="5"/>
+        <text x="198" y="204" text-anchor="middle">Other applications</text>
       </g>
       <!-- links defeated -->
       <g class="defeat">
